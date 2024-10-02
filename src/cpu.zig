@@ -5,6 +5,7 @@ const std = @import("std");
 // https://www.ahl27.com/posts/2023/01/6502-emu1/
 // https://archive.org/details/mos_microcomputers_programming_manual
 // http://www.6502.org/tutorials/65c02opcodes.html
+// http://www.6502.org/users/obelisk/6502/reference.html#BRK
 
 const CPUError = error {
     nullByte,
@@ -19,7 +20,7 @@ const CPU = struct {
     RY: u8, // index register
     RPC: u16, // Program counter
 
-    pub fn assignInstruction(self: *CPU, memory: []u8) !void {
+    pub fn assignInstruction(self: *CPU, memory: []*u8) !void {
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
         if (instruction == null) { // Error handling
@@ -31,8 +32,15 @@ const CPU = struct {
             // 6502 instruction set
             0x00 => { // BRK
                 self.RP = 0b00001100;
+            },
+            0x01 => { 
+
             }
         }
+        
+    }
+
+    fn andWithCarry() u8 {
         
     }
 
