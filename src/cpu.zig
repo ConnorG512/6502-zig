@@ -9,6 +9,7 @@ const std = @import("std");
 
 const CPUError = error {
     nullByte,
+    unimplementedInstruction,
 };
 
 const CPU = struct {
@@ -20,7 +21,20 @@ const CPU = struct {
     RY: u8, // index register
     RPC: u16, // Program counter
 
-    const addressingMode = enum {Immediate, zeroPage, zeroPageX, Absolute, AbsoluteX, AbsoluteY, IndirectX, IndirectY};
+    const addressingMode = enum {
+        Accumulator,
+        Immediate, 
+        zeroPage, 
+        zeroPageX,
+        zeroPageY,
+        relative, 
+        absolute, 
+        AbsoluteX, 
+        AbsoluteY, 
+        Indirect,
+        IndirectX, 
+        IndirectY,
+        Implied };
 
     pub fn assignInstruction(self: *CPU, memory: []*u8) !void {
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
@@ -42,8 +56,39 @@ const CPU = struct {
         
     }
 
-    fn andWithCarry() u8 {
+    fn andWithCarry(self: *CPU, mode: addressingMode) !u8 {
+        switch (mode) {
+            addressingMode.Immediate => {
+                std.debug.print("Todo", .{});
+            },
+            addressingMode.zeroPage => {
+                return CPUError.unimplementedInstruction;
+            },
+            addressingMode.zeroPageX => {
+                return CPUError.unimplementedInstruction;
 
+            },
+            addressingMode.Absolute => {
+                return CPUError.unimplementedInstruction;
+
+            },
+            addressingMode.AbsoluteX => {
+                return CPUError.unimplementedInstruction;
+
+            },
+            addressingMode.AbsoluteY => {
+                return CPUError.unimplementedInstruction;
+
+            },
+            addressingMode.IndirectX => {
+                return CPUError.unimplementedInstruction;
+
+            },
+            addressingMode.IndirectY => {
+                return CPUError.unimplementedInstruction;
+
+            }
+        }
     }
 
 };
