@@ -13,22 +13,25 @@ const CPUError = error {
 const CPU = struct {
     // Registers 
     RA: u8, // Accumulator register
-    RP: u8, // Status register - Only 7 bits are used, bit 5 is always 1
+    RP: u8, // Status register - Only 7 bits are used, bit 5 is always 1. 0C, 1Z, 2I, 3D, 4B, 5 Unused, 6V, 7N
     RS: u8, // Stack Pointer 
     RX: u8, // index register
     RY: u8, // index register
     RPC: u16, // Program counter
 
-    pub fn assignInstruction(self: CPU, byteToRead: *u8) !void {
+    pub fn assignInstruction(self: *CPU, memory: []u8) !void {
+        const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
-        if (byteToRead == null) { // Error handling
+        if (instruction == null) { // Error handling
             std.debug.print("Error, Byte is null!", .{});
             return CPUError.nullByte;
         }   
         
-        switch (byteToRead) {
+        switch (instruction) {
             // 6502 instruction set
-            0x
+            0x00 => { // BRK
+                self.RP = 0b00001100;
+            }
         }
         
     }
