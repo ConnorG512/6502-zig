@@ -20,6 +20,8 @@ const CPU = struct {
     RY: u8, // index register
     RPC: u16, // Program counter
 
+    const addressingMode = enum {Immediate, zeroPage, zeroPageX, Absolute, AbsoluteX, AbsoluteY, IndirectX, IndirectY};
+
     pub fn assignInstruction(self: *CPU, memory: []*u8) !void {
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
@@ -41,7 +43,7 @@ const CPU = struct {
     }
 
     fn andWithCarry() u8 {
-        
+
     }
 
 };
