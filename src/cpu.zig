@@ -10,6 +10,7 @@ const std = @import("std");
 const CPUError = error {
     nullByte,
     unimplementedInstruction,
+    invalidAddressingMode,
 };
 
 const CPU = struct {
@@ -87,6 +88,9 @@ const CPU = struct {
             addressingMode.IndirectY => {
                 return CPUError.unimplementedInstruction;
 
+            }
+            _ => {
+                return CPUError.invalidAddressingMode;
             }
         }
     }
