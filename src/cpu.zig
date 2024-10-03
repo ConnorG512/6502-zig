@@ -1,4 +1,6 @@
 const std = @import("std");
+const log = @import("logging.zig");
+
 // CPU Info
 // https://en.wikipedia.org/wiki/MOS_Technology_6502
 // http://www.6502.org/users/obelisk/6502/instructions.html
