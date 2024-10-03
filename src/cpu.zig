@@ -9,8 +9,10 @@ const std = @import("std");
 
 const CPUError = error {
     nullByte,
-    unimplementedInstruction,
+    unimplementedAddressPipe,
+    unimplementedOpCode,
     invalidAddressingMode,
+    invalidOpCode,
 };
 
 const CPU = struct {
@@ -57,41 +59,35 @@ const CPU = struct {
         
     }
 
-    fn andWithCarry(self: *CPU, mode: addressingMode) !u8 {
+    fn addWithCarry(self: *CPU, mode:addressingMode) !void {
         switch (mode) {
             addressingMode.Immediate => {
-                std.debug.print("Todo", .{});
+                return CPUError.unimplementedOpCode;
             },
             addressingMode.zeroPage => {
-                return CPUError.unimplementedInstruction;
+                return CPUError.unimplementedOpCode;
             },
             addressingMode.zeroPageX => {
-                return CPUError.unimplementedInstruction;
-
+                return CPUError.unimplementedOpCode;
             },
-            addressingMode.Absolute => {
-                return CPUError.unimplementedInstruction;
-
+            addressingMode.absolute => {
+                return CPUError.unimplementedOpCode;
             },
             addressingMode.AbsoluteX => {
-                return CPUError.unimplementedInstruction;
-
+                return CPUError.unimplementedOpCode;
             },
             addressingMode.AbsoluteY => {
-                return CPUError.unimplementedInstruction;
-
+                return CPUError.unimplementedOpCode;
             },
             addressingMode.IndirectX => {
-                return CPUError.unimplementedInstruction;
-
+                return CPUError.unimplementedOpCode;
             },
             addressingMode.IndirectY => {
-                return CPUError.unimplementedInstruction;
-
+                return CPUError.unimplementedOpCode;
             },
             _ => {
-                return CPUError.invalidAddressingMode;
-            }
+                return CPUError.invalidOpCode;
+            },
         }
     }
 
