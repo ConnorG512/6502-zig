@@ -112,7 +112,7 @@ const CPU = struct {
             return CPUError.null_cpu_ref;
         }
         
-        self.RP = ~0b1_1_1_1_1_1_1_1;
+        self.RP = 0b1_1_1_1_1_1_1_1;
     }
 
     fn setFlag(self: *CPU, flag:u8) !void {
