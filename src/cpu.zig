@@ -112,13 +112,27 @@ const CPU = struct {
             return CPUError.null_cpu_ref;
         }
         
-        self.RP = 0b1_1_1_1_1_1_1_1;
+        self.RP = ~0b1_1_1_1_1_1_1_1;
     }
 
     fn setFlag(self: *CPU, flag:u8) !void {
+        if (self == null) {
+            return CPUError.null_cpu_ref;
+        }
 
+        // bitwise or (|) operation to set the respective bits to 1
+        self.RP |= flag;
     }
     
+    fn clearFlag(self: *CPU, flag:u8) !void {
+        if (self == null) {
+            return CPUError.null_cpu_ref;
+        }
+
+        // bitwise and (&) not (~) operation to set the respective bits to 0
+        self.RP &= ~flag;
+    }
+
     fn clearAllFlags (self: *CPU) !void {
         if (self == null) {
             return CPUError.null_cpu_ref;
