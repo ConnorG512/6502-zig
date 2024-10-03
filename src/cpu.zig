@@ -1,5 +1,5 @@
 const std = @import("std");
-const log = @import("logging.zig");
+const logging = @import("logging.zig");
 
 // CPU Info
 // https://en.wikipedia.org/wiki/MOS_Technology_6502
@@ -47,7 +47,7 @@ const CPU = struct {
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
         if (instruction == null) { // Error handling
-            std.debug.print("Error, Byte is null!", .{});
+            logging.errorLog("Error, Byte is null!");
             return CPUError.nullByte;
         }   
         
