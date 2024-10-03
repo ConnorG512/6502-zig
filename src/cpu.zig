@@ -62,7 +62,7 @@ const CPU = struct {
     }
 
     fn addWithCarry(self: *CPU, memory: []*u8, mode:addressingMode) !void {
-        var operand: u8 = 0;
+        var operand: u16 = 0;
         
         switch (mode) {
             addressingMode.immediate => {
@@ -75,7 +75,7 @@ const CPU = struct {
                 return CPUError.unimplemented_op_code;
             },
             addressingMode.absolute => {
-                return CPUError.unimplemented_op_code;
+                operand = absoluteAddressingMode(CPU, memory);
             },
             addressingMode.absolute_x => {
                 return CPUError.unimplemented_op_code;
@@ -171,6 +171,17 @@ const CPU = struct {
     fn immediateAddressingMode(self: CPU, memory: []*u8) u8 {
         const operand = memory[self.RPC + 1].*; // Dereferencing the value in the array 
         self.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
+        std.debug.print("Immediate addressing completed, returning value {d}. \n", .{operand});
         return operand;
+    }
+    
+    fn absoluteAddressingMode(self: CPU, memory: []*u8) u16 {
+        // Instructions using absolute addressing contain a full 16 bit address to identify the target location.
+        const low_byte: u8 = memory[self.RPC + 1].*; // Fetching the low byte
+        const high_byte: u8 = memory[self.RPC + 2].*; // Fetching the high byte
+        self.RPC += 3; // Moving the program counter 3 spaces forward
+        std.debug.print("Absolute addressing completed retuning value {d}, {d}. \n", .{low_byte, high_byte});
+        const result: u16 = (high_byte << 8 | low_byte);
+        return result;
     }
 };
