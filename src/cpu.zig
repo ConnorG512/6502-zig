@@ -14,6 +14,7 @@ const CPUError = error {
     unimplemented_op_code,
     invalid_addressing_mode,
     invalid_op_code,
+    cpu_flag_overflow,
 };
 
 const CPU = struct {
@@ -120,19 +121,14 @@ const CPU = struct {
             return CPUError.null_cpu_ref;
         }
 
+        if (flag > 0b1_1_1_1_1_1_1_1) {
+            return CPUError.cpu_flag_overflow;
+        }
+
         // bitwise or (|) operation to set the respective bits to 1
         self.RP |= flag;
     }
     
-    fn clearFlag(self: *CPU, flag:u8) !void {
-        if (self == null) {
-            return CPUError.null_cpu_ref;
-        }
-
-        // bitwise and (&) not (~) operation to set the respective bits to 0
-        self.RP &= ~flag;
-    }
-
     fn clearAllFlags (self: *CPU) !void {
         if (self == null) {
             return CPUError.null_cpu_ref;
@@ -140,4 +136,18 @@ const CPU = struct {
 
         self.RP = 0b0_0_0_0_1_0_0_0;
     }
+
+    fn clearFlag(self: *CPU, flag:u8) !void {
+        if (self == null) {
+            return CPUError.null_cpu_ref;
+        }
+        
+        if (flag > 0b1_1_1_1_1_1_1_1) {
+            return CPUError.cpu_flag_overflow;
+        }
+        
+        // bitwise and (&) not (~) operation to set the respective bits to 0
+        self.RP &= ~flag;
+    }
+
 };
