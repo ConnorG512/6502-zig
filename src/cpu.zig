@@ -5,7 +5,7 @@ const std = @import("std");
 // https://www.ahl27.com/posts/2023/01/6502-emu1/
 // https://archive.org/details/mos_microcomputers_programming_manual
 // http://www.6502.org/tutorials/65c02opcodes.html
-// http://www.6502.org/users/obelisk/6502/reference.html#BRK
+// http://www.6502.org/users/obelisk/6502/reference.html
 
 const CPUError = error {
     null_byte,
@@ -92,6 +92,7 @@ const CPU = struct {
                 return CPUError.invalid_op_code;
             },
 
+            var carry: u8 = if (self.RP)
             
         }
     }
