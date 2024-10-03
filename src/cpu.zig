@@ -8,11 +8,11 @@ const std = @import("std");
 // http://www.6502.org/users/obelisk/6502/reference.html#BRK
 
 const CPUError = error {
-    nullByte,
-    unimplementedAddressPipe,
-    unimplementedOpCode,
-    invalidAddressingMode,
-    invalidOpCode,
+    null_byte,
+    unimplemented_address_pipe,
+    unimplemented_op_code,
+    invalid_addressing_mode,
+    invalid_op_code,
 };
 
 const CPU = struct {
@@ -25,19 +25,19 @@ const CPU = struct {
     RPC: u16, // Program counter
 
     const addressingMode = enum {
-        Accumulator,
-        Immediate, 
-        zeroPage, 
-        zeroPageX,
-        zeroPageY,
+        accumulator,
+        immediate, 
+        zero_page, 
+        zero_page_x,
+        zero_page_y,
         relative, 
         absolute, 
-        AbsoluteX, 
-        AbsoluteY, 
-        Indirect,
-        IndirectX, 
-        IndirectY,
-        Implied };
+        absolute_x, 
+        absolute_y, 
+        indirect,
+        indirect_x, 
+        indirect_y,
+        implied };
 
     pub fn assignInstruction(self: *CPU, memory: []*u8) !void {
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
@@ -63,34 +63,36 @@ const CPU = struct {
         var operand: u8 = 0;
         
         switch (mode) {
-            addressingMode.Immediate => {
+            addressingMode.immediate => {
                 operand = memory[self.RPC + 1].*; // Dereferencing the value in the array 
-                
+                self.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
             },
-            addressingMode.zeroPage => {
-                return CPUError.unimplementedOpCode;
+            addressingMode.zero_page => {
+                return CPUError.unimplemented_op_code;
             },
-            addressingMode.zeroPageX => {
-                return CPUError.unimplementedOpCode;
+            addressingMode.zero_page_x => {
+                return CPUError.unimplemented_op_code;
             },
             addressingMode.absolute => {
-                return CPUError.unimplementedOpCode;
+                return CPUError.unimplemented_op_code;
             },
-            addressingMode.AbsoluteX => {
-                return CPUError.unimplementedOpCode;
+            addressingMode.absolute_x => {
+                return CPUError.unimplemented_op_code;
             },
-            addressingMode.AbsoluteY => {
-                return CPUError.unimplementedOpCode;
+            addressingMode.absolute_y => {
+                return CPUError.unimplemented_op_code;
             },
-            addressingMode.IndirectX => {
-                return CPUError.unimplementedOpCode;
+            addressingMode.indirect_x => {
+                return CPUError.unimplemented_op_code;
             },
-            addressingMode.IndirectY => {
-                return CPUError.unimplementedOpCode;
+            addressingMode.indirect_y => {
+                return CPUError.unimplemented_op_code;
             },
             _ => {
-                return CPUError.invalidOpCode;
+                return CPUError.invalid_op_code;
             },
+
+            
         }
     }
 
