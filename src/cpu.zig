@@ -104,6 +104,19 @@ const CPU = struct {
                 0;
             };
             
+            // Sum all of the registers together including the carry flag.
+            const result: u16 =  @as(u16, self.RA) + @as(u16, operand) + @as(u16, carry);
+
+            // if there is an overflow, the carry flag will need to be set to 1
+            if (result > 0xFF) {
+                setFlag(0b0_0_0_0_0_0_0_1);
+            } else {
+                clearFlag(0b0_0_0_0_0_0_0_1);
+            }
+
+            // Storing the lower bit value back in the accumulator
+            self.RA = u8(result & 0xFF); 
+
     }
 
     // Set flags for functions
