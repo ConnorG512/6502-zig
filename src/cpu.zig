@@ -9,6 +9,7 @@ const std = @import("std");
 
 const CPUError = error {
     null_byte,
+    null_cpu_ref,
     unimplemented_address_pipe,
     unimplemented_op_code,
     invalid_addressing_mode,
@@ -92,9 +93,37 @@ const CPU = struct {
                 return CPUError.invalid_op_code;
             },
 
-            var carry: u8 = if (self.RP)
-            
         }
+
+            // The carry flag is set if an overflow occurs
+            // If the flag is set to 1 then set carry as 1 otherwise 0
+            const carry: u8 = if (self.RP & 0b00000001 != 0) {
+                1;
+            } else {
+                0;
+            };
+            
     }
 
+    // Set flags for functions
+    // flag 5 is unused in 6502 and will always be set to the value of 1
+    fn setAllFlags(self: *CPU) !void {
+        if (self == null) {
+            return CPUError.null_cpu_ref;
+        }
+        
+        self.RP = 0b1_1_1_1_1_1_1_1;
+    }
+
+    fn setFlag(self: *CPU, flag:u8) !void {
+
+    }
+    
+    fn clearAllFlags (self: *CPU) !void {
+        if (self == null) {
+            return CPUError.null_cpu_ref;
+        }
+
+        self.RP = 0b0_0_0_0_1_0_0_0;
+    }
 };
