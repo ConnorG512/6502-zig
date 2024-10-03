@@ -88,7 +88,7 @@ const CPU = struct {
             addressingMode.IndirectY => {
                 return CPUError.unimplementedInstruction;
 
-            }
+            },
             _ => {
                 return CPUError.invalidAddressingMode;
             }
