@@ -66,8 +66,7 @@ const CPU = struct {
         
         switch (mode) {
             addressingMode.immediate => {
-                operand = memory[self.RPC + 1].*; // Dereferencing the value in the array 
-                self.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
+                operand = immediateAddressingMode(self, memory);
             },
             addressingMode.zero_page => {
                 return CPUError.unimplemented_op_code;
@@ -169,4 +168,9 @@ const CPU = struct {
         self.RP &= ~flag;
     }
 
+    fn immediateAddressingMode(self: CPU, memory: []*u8) u8 {
+        const operand = memory[self.RPC + 1].*; // Dereferencing the value in the array 
+        self.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
+        return operand;
+    }
 };
