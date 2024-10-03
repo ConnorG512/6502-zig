@@ -59,10 +59,13 @@ const CPU = struct {
         
     }
 
-    fn addWithCarry(self: *CPU, mode:addressingMode) !void {
+    fn addWithCarry(self: *CPU, memory: []*u8, mode:addressingMode) !void {
+        var operand: u8 = 0;
+        
         switch (mode) {
             addressingMode.Immediate => {
-                return CPUError.unimplementedOpCode;
+                operand = memory[self.RPC + 1].*; // Dereferencing the value in the array 
+                
             },
             addressingMode.zeroPage => {
                 return CPUError.unimplementedOpCode;
