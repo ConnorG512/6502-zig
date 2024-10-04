@@ -124,7 +124,7 @@ const CPU = struct {
     // flag 5 is unused in 6502 and will always be set to the value of 1
     fn setAllFlags(self: *CPU) !void {
         if (self == null) {
-            std.debug.print("Error: CPU null reference in setAllFlags() !", .{});
+            logging.errorLog("Error: CPU null reference in setAllFlags() !");
             return CPUError.null_cpu_ref;
         }
         
@@ -133,12 +133,12 @@ const CPU = struct {
 
     fn setFlag(self: *CPU, flag:u8) !void {
         if (self == null) {
-            std.debug.print("Error: CPU null reference in setFlag() !", .{});
+            logging.errorLog("Error: CPU null reference in setFlag() !");
             return CPUError.null_cpu_ref;
         }
 
         if (flag > 0b1_1_1_1_1_1_1_1) {
-            std.debug.print("Error: Flag overflow in setFlag() !", .{});
+            logging.errorLog("Error: Flag overflow in setFlag() !");
             return CPUError.cpu_flag_overflow;
         }
 
@@ -148,7 +148,7 @@ const CPU = struct {
     
     fn clearAllFlags (self: *CPU) !void {
         if (self == null) {
-            std.debug.print("Error: CPU null reference in clearAllFlags() !", .{});
+            logging.errorLog("Error: CPU null reference in clearAllFlags() !");
             return CPUError.null_cpu_ref;
         }
 
@@ -157,12 +157,12 @@ const CPU = struct {
 
     fn clearFlag(self: *CPU, flag:u8) !void {
         if (self == null) {
-            std.debug.print("Error: CPU null reference in clearFlag() !", .{});
+            logging.errorLog("Error: CPU null reference in clearFlag() !");
             return CPUError.null_cpu_ref;
         }
         
         if (flag > 0b1_1_1_1_1_1_1_1) {
-            std.debug.print("Error: Flag overflow in clearFlag() !", .{});
+            logging.errorLog("Error: Flag overflow in clearFlag() !");
             return CPUError.cpu_flag_overflow;
         }
 
@@ -172,8 +172,8 @@ const CPU = struct {
 
     fn immediateAddressingMode(self: CPU, memory: []*u8) u8 {
         const operand = memory[self.RPC + 1].*; // Dereferencing the value in the array 
+        logging.infoLog("Immediate addressing completed.", &memory[self.RPC + 1]);
         self.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
-        std.debug.print("Immediate addressing completed, returning value {d}. \n", .{operand});
         return operand;
     }
     
@@ -181,8 +181,9 @@ const CPU = struct {
         // Instructions using absolute addressing contain a full 16 bit address to identify the target location.
         const low_byte: u8 = memory[self.RPC + 1].*; // Fetching the low byte
         const high_byte: u8 = memory[self.RPC + 2].*; // Fetching the high byte
+        logging.infoLog("Low byte address: ", &memory[self.RPC + 1]);
+        logging.infoLog("High byte address: ", &memory[self.RPC + 2]);
         self.RPC += 3; // Moving the program counter 3 spaces forward
-        std.debug.print("Absolute addressing completed retuning value {d}, {d}. \n", .{low_byte, high_byte});
         const result: u16 = (high_byte << 8 | low_byte);
         return result;
     }
