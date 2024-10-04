@@ -187,11 +187,31 @@ const CPU = struct {
         self.RP &= ~flag;
     }
 
+    fn accumulatorAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
+    }
+
     fn immediateAddressingMode(self: CPU, memory: []*u8) u8 {
         const operand = memory[self.RPC + 1].*; // Dereferencing the value in the array 
         logging.infoLog("Immediate addressing completed.", &memory[self.RPC + 1]);
         self.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
         return operand;
+    }
+
+    fn zeroPageAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
+    }
+
+    fn zeroPageXAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
+    }
+
+    fn zeroPageYAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
+    }
+
+    fn relativeAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
     }
     
     fn absoluteAddressingMode(self: CPU, memory: []*u8) u16 {
@@ -203,5 +223,25 @@ const CPU = struct {
         self.RPC += 3; // Moving the program counter 3 spaces forward
         const result: u16 = (high_byte << 8 | low_byte);
         return result;
+    }
+
+    fn absoluteXAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
+    }
+
+    fn absoluteYAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
+    }
+
+    fn indirectAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
+    }
+
+    fn indexedIndirectAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
+    }
+
+    fn indirectIndexedAddressingMode(self: CPU, memory: []*u8) u16 {
+        logging.errorLog("Uninplemented Instruction!");
     }
 };
