@@ -16,6 +16,7 @@
 
 const std = @import("std");
 const logging = @import("logging.zig");
+const memory = @import("memory.zig");
 
 // CPU Info
 // https://en.wikipedia.org/wiki/MOS_Technology_6502
