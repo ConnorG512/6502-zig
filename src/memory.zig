@@ -13,14 +13,3 @@
 
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-const std = @import("std");
-const cpu = @import("cpu.zig");
-
-pub fn main() !void {
-
-}
-
-test "simple test" {
-
-}
