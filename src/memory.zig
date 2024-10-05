@@ -18,6 +18,8 @@
 // The memory in the 6502 CPU is in little endian, this means that that the least 
 // siginificant or low byte comes first in memory.
 
+@const logging = @import("logging.zig");
+
 pub const Memory = struct {
     mem_array: [0x10000]u8, // 64KB of total memory
     
