@@ -16,6 +16,7 @@
 
 const std = @import("std");
 const logging = @import("logging.zig");
+const memory_module = @import("memory.zig").Memory;
 
 // CPU Info
 // https://en.wikipedia.org/wiki/MOS_Technology_6502
@@ -190,39 +191,39 @@ const CPU = struct {
     // ADDRESSING MODES
     /////////////////////////////////////////////////////////////////////////
     
-    fn accumulatorAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn accumulatorAddressingMode(self: CPU, memory: *memory_module) u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn immediateAddressingMode(self: CPU, memory: []*u8) u8 {
-        const operand = memory[self.RPC + 1].*; // Dereferencing the value in the array 
-        logging.infoLog("Immediate addressing completed.", &memory[self.RPC + 1]);
+    fn immediateAddressingMode(self: CPU, memory: *memory_module) u8 {
+        const operand: u8 = memory.readByte(self.RPC + 1); // Dereferencing the value in the array 
+        logging.infoLog("Immediate addressing completed.", operand);
         self.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
         return operand;
     }
 
-    fn zeroPageAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn zeroPageAddressingMode(self: CPU, memory: *memory_module) u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn zeroPageXAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn zeroPageXAddressingMode(self: CPU, memory: *memory_module) u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn zeroPageYAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn zeroPageYAddressingMode(self: CPU, memory: *memory_module) u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn relativeAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn relativeAddressingMode(self: CPU, memory: *memory_module) u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
     
-    fn absoluteAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn absoluteAddressingMode(self: CPU, memory: *memory_module) u16 {
         // Instructions using absolute addressing contain a full 16 bit address to identify the target location.
-        const low_byte: u8 = memory[self.RPC + 1].*; // Fetching the low byte
-        const high_byte: u8 = memory[self.RPC + 2].*; // Fetching the high byte
-        logging.infoLog("Low byte address: ", &memory[self.RPC + 1]);
-        logging.infoLog("High byte address: ", &memory[self.RPC + 2]);
+        const low_byte: u8 = memory.readByte(self.RPC + 1); // Fetching the low byte
+        const high_byte: u8 = memory.readByte(self.RPC + 1); // Fetching the high byte
+        logging.infoLog("Low byte address: ", low_byte);
+        logging.infoLog("High byte address: ", high_byte);
         self.RPC += 3; // Moving the program counter 3 spaces forward
         const result: u16 = (high_byte << 8 | low_byte);
         return result;
