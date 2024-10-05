@@ -197,7 +197,6 @@ const CPU = struct {
 
     fn immediateAddressingMode(self: CPU, memory: *memory_module) u8 {
         const operand: u8 = memory.readByte(self.RPC + 1); // Dereferencing the value in the array 
-        logging.infoLog("Immediate addressing completed.", operand);
         self.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
         return operand;
     }
@@ -222,8 +221,6 @@ const CPU = struct {
         // Instructions using absolute addressing contain a full 16 bit address to identify the target location.
         const low_byte: u8 = memory.readByte(self.RPC + 1); // Fetching the low byte
         const high_byte: u8 = memory.readByte(self.RPC + 1); // Fetching the high byte
-        logging.infoLog("Low byte address: ", low_byte);
-        logging.infoLog("High byte address: ", high_byte);
         self.RPC += 3; // Moving the program counter 3 spaces forward
         const result: u16 = (high_byte << 8 | low_byte);
         return result;
