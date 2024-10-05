@@ -191,7 +191,7 @@ const CPU = struct {
     // ADDRESSING MODES
     /////////////////////////////////////////////////////////////////////////
     
-    fn accumulatorAddressingMode(self: CPU, memory: *memory_module) u16 {
+    fn accumulatorAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
@@ -201,19 +201,19 @@ const CPU = struct {
         return operand;
     }
 
-    fn zeroPageAddressingMode(self: CPU, memory: *memory_module) u16 {
+    fn zeroPageAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn zeroPageXAddressingMode(self: CPU, memory: *memory_module) u16 {
+    fn zeroPageXAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn zeroPageYAddressingMode(self: CPU, memory: *memory_module) u16 {
+    fn zeroPageYAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn relativeAddressingMode(self: CPU, memory: *memory_module) u16 {
+    fn relativeAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
     
@@ -226,23 +226,23 @@ const CPU = struct {
         return result;
     }
 
-    fn absoluteXAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn absoluteXAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn absoluteYAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn absoluteYAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn indirectAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn indirectAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn indexedIndirectAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn indexedIndirectAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn indirectIndexedAddressingMode(self: CPU, memory: []*u8) u16 {
+    fn indirectIndexedAddressingMode() u16 {
         logging.errorLog("Uninplemented Instruction!");
     }
 };
