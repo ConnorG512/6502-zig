@@ -15,15 +15,12 @@
 //along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 // All addresses in the CPU emulation are 16 bits wide / u16
-// The memory in the 6502 CPU is in little endian, this means that that the least 
-// siginificant or low byte comes first in memory.
 
 const logging = @import("logging.zig");
 
 pub const Memory = struct {
     mem_array: [0x10000]u8, // 64KB of total memory
     
-
     pub fn readByte(self: *Memory, address: u16) u8 {
         // Passes the address to read  and returns the byte in memory.
         logging.infoPointerLog("readByte: address read: ", &address);

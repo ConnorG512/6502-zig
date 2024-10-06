@@ -16,7 +16,6 @@
 
 const std = @import("std");
 
-
  // ANSI escape codes for colours
 const reset = "\x1b[0m"; // Reset to default color
 const red = "\x1b[31m";   // Red text
