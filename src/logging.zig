@@ -29,7 +29,7 @@ pub fn infoPointerLog(message: []const u8, address: *u64) void {
     std.debug.print("INFO Log: {}, Address: {p}\n", .{message, address});
 }
 pub fn infoDecValueLog(message: []const u8, value: u16) void {
-    std.debug.print("INFO Log: {}, Address: {p}\n", .{message, value});
+    std.debug.print("INFO Log: {}, Address: {d}\n", .{message, value});
 }
 pub fn errorLog(message: []const u8) void {
     std.debug.print("{}ERROR: {}\n", .{red, message});
