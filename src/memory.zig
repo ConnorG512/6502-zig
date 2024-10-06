@@ -49,6 +49,6 @@ pub const Memory = struct {
         self.writeByte(address, low_byte);
         logging.infoDecValueLog("writeWord: value low_byte written:", low_byte);
         self.writeByte(address + 1, high_byte);
-        logging.infoDecValueLog("writeWord: value low_byte written:", low_byte);
+        logging.infoDecValueLog("writeWord: value low_byte written:", high_byte);
     }
 }; 
