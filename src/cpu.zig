@@ -235,12 +235,16 @@ const CPU = struct {
         return result;
     }
 
-    fn absoluteXAddressingMode() u16 {
-        logging.errorLog("Uninplemented Instruction!");
+    fn absoluteXAddressingMode(self: *CPU, memory: *memory_module) u16 {
+        const base_address: u16 = memory.readWord(self.RPC + 1); // Fetching the absolute address
+        const address: u16 = base_address + self.RY; // Add y Register
+        return address;
     }
 
-    fn absoluteYAddressingMode() u16 {
-        logging.errorLog("Uninplemented Instruction!");
+    fn absoluteYAddressingMode(self: *CPU, memory: *memory_module) u16 {
+        const base_address: u16 = memory.readWord(self.RPC + 1); // Fetching the absolute address
+        const address: u16 = base_address + self.RX; // Add y Register
+        return address;
     }
 
     fn indirectAddressingMode() u16 {
