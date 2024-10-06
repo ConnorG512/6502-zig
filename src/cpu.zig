@@ -237,13 +237,13 @@ const CPU = struct {
 
     fn absoluteXAddressingMode(self: *CPU, memory: *memory_module) u16 {
         const base_address: u16 = memory.readWord(self.RPC + 1); // Fetching the absolute address
-        const address: u16 = base_address + self.RY; // Add y Register
+        const address: u16 = base_address + self.RY; // Add Y Register
         return address;
     }
 
     fn absoluteYAddressingMode(self: *CPU, memory: *memory_module) u16 {
         const base_address: u16 = memory.readWord(self.RPC + 1); // Fetching the absolute address
-        const address: u16 = base_address + self.RX; // Add y Register
+        const address: u16 = base_address + self.RX; // Add X Register
         return address;
     }
 
