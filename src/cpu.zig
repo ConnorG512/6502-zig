@@ -210,12 +210,16 @@ const CPU = struct {
         return value; 
     }
 
-    fn zeroPageXAddressingMode() u16 {
-        logging.errorLog("Uninplemented Instruction!");
+    fn zeroPageXAddressingMode(self: *CPU, memory: *memory_module) u16 {
+        const base_address: u8 = memory.readByte(self.RPC + 1); // Fetch a Zero Page address
+        const address: u16 = (base_address + self.RX) & 0xFF; // Adding and wrapping X to 8 bits
+        return address;
     }
 
-    fn zeroPageYAddressingMode() u16 {
-        logging.errorLog("Uninplemented Instruction!");
+    fn zeroPageYAddressingMode(self: *CPU, memory: *memory_module) u16 {
+        const base_address: u8 = memory.readByte(self.RPC + 1); // Fetch a Zero Page address
+        const address: u16 = (base_address + self.RY) & 0xFF; // Adding and wrapping X to 8 bits
+        return address;
     }
 
     fn relativeAddressingMode() u16 {
