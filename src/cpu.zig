@@ -195,13 +195,13 @@ const CPU = struct {
         logging.errorLog("Uninplemented Instruction!");
     }
 
-    fn immediateAddressingMode(self: CPU, memory: *memory_module) u8 {
+    fn immediateAddressingMode(self: *CPU, memory: *memory_module) u8 {
         const operand: u8 = memory.readByte(self.RPC + 1); // Dereferencing the value in the array 
         self.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
         return operand;
     }
 
-    fn zeroPageAddressingMode(self: CPU, memory: *memory_module) u16 {
+    fn zeroPageAddressingMode(self: *CPU, memory: *memory_module) u16 {
         const address: u16 = memory.readByte(self.RPC); // Read address from counter
         const value: u8 = memory.readByte(address); // Read value from zero page address
 
@@ -226,7 +226,7 @@ const CPU = struct {
         logging.errorLog("Uninplemented Instruction!");
     }
     
-    fn absoluteAddressingMode(self: CPU, memory: *memory_module) u16 {
+    fn absoluteAddressingMode(self: *CPU, memory: *memory_module) u16 {
         // Instructions using absolute addressing contain a full 16 bit address to identify the target location.
         const low_byte: u8 = memory.readByte(self.RPC + 1); // Fetching the low byte
         const high_byte: u8 = memory.readByte(self.RPC + 1); // Fetching the high byte
