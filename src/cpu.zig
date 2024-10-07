@@ -229,7 +229,7 @@ const CPU = struct {
     fn absoluteAddressingMode(self: *CPU, memory: *memory_module) u16 {
         // Instructions using absolute addressing contain a full 16 bit address to identify the target location.
         const low_byte: u8 = memory.readByte(self.RPC + 1); // Fetching the low byte
-        const high_byte: u8 = memory.readByte(self.RPC + 1); // Fetching the high byte
+        const high_byte: u8 = memory.readByte(self.RPC + 2); // Fetching the high byte
         self.RPC += 3; // Moving the program counter 3 spaces forward
         const result: u16 = (high_byte << 8 | low_byte);
         return result;
