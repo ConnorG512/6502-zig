@@ -17,6 +17,10 @@
 const logging = @import("logging.zig");
 
 const CPU_flag = struct {
+
+    const CPUFlagError = error {
+        flagNull,
+    };
     
     const cpuFlag = enum {
         carry_f,        // bit 0
@@ -29,45 +33,21 @@ const CPU_flag = struct {
         negative_f,     // bit 7
     };
 
-    // Set flags for functions
-    // flag 5 is unused in 6502 and will always be set to the value of 1
-    fn setAllFlags() !void {
-        if (self == null) {
-            logging.errorLog("Error: CPU null reference in setAllFlags() !");
-            return CPUError.null_cpu_ref;
+    pub fn setAllFlags(flag_register: *u8) !void  {
+        if (flag_register == null) {
+            logging.errorLog("Error, CPU flag is null!");
+            return CPUFlagError.flagNull;
         }
-        
-        self.RP = 0b1_1_1_1_1_1_1_1;
+
+        flag_register = 0b1_1_1_1_1_1_1_1; // Setting all flags to 1
     }
 
-    fn clearAllFlags () !void {
-        if (self == null) {
-            logging.errorLog("Error: CPU null reference in clearAllFlags() !");
-            return CPUError.null_cpu_ref;
+    pub fn clearAllFlags(flag_register: *u8) !void {
+        if (flag_register == null) {
+            logging.errorLog("Error, CPU flag is null!");
+            return CPUFlagError.flagNull;
         }
 
-        self.RP = 0b0_0_0_1_0_0_0_0;
-    }
-
-    fn setFlag(self: *CPU_flag) !void {
-        switch (cpuFlag) {
-            
-        }
-        
-    }
-    
-    fn clearFlag() !void {
-        if (self == null) {
-            logging.errorLog("Error: CPU null reference in clearFlag() !");
-            return CPUError.null_cpu_ref;
-        }
-        
-        if (flag > 0b1_1_1_1_1_1_1_1) {
-            logging.errorLog("Error: Flag overflow in clearFlag() !");
-            return CPUError.cpu_flag_overflow;
-        }
-
-        // bitwise and (&) not (~) operation to set the respective bits to 0
-        self.RP &= ~flag;
+        flag_register = 0b0_0_0_1_0_0_0_0; // Set all flags to 0 except bit 5 which is unused
     }
 };
