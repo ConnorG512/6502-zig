@@ -64,14 +64,10 @@ pub const CPU = struct {
 
     const cpu_flags = cpu_flag_module.flagEnum;
 
-    pub fn assignInstruction(self: *CPU, memory: []*u8) !void {
+    pub fn assignInstruction(self: *CPU, memory: *const [65536]u8) !void {
+        
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
-        if (instruction == null) { // Error handling
-            logging.errorLog("Error, Byte is null!");
-            return CPUError.nullByte;
-        }   
-        
         switch (instruction) {
             // 6502 instruction set
             0x00 => { // BRK
