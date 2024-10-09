@@ -71,6 +71,7 @@ pub const CPU = struct {
         switch (instruction) {
             // 6502 instruction set
             0x00 => { // BRK
+            logging.infoLog("Break hit! \n");
                 self.RP = 0b00001100;
             },
             0x01 => { 
