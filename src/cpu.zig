@@ -137,6 +137,37 @@ const CPU = struct {
 
     }
 
+    fn logicalAND(self: *CPU, memory: []*u8, mode:addressingMode) !void {
+        const operand: u16 = 0;
+
+        switch (mode) {
+            addressingMode.immediate => {
+                operand = immediateAddressingMode(self, memory);
+            }
+            addressingMode.zero_page => {
+                operand = zeroPageAddressingMode(slef, memory);
+            }
+            addressingMode.zero_page_x => {
+                operand = zeroPageXAddressingMode(self, memory);
+            }
+            addressingMode.absolute => {
+                operand = absoluteAddressingMode(self, memory);
+            }
+            addressingMode.absolute_x => {
+                operand = absoluteXAddressingMode(self, memory);
+            }
+            addressingMode.absolute_y => {
+                operand = absoluteYAddressingMode(self, memory);
+            }
+            addressingMode.indirect_x => {
+                return CPUError.invalid_addressing_mode;
+            }
+            addressingMode.zero_page => {
+                return CPUError.invalid_addressing_mode;
+            }
+        }
+    }
+
     // Set flags for functions
     // flag 5 is unused in 6502 and will always be set to the value of 1
     fn setAllFlags(self: *CPU) !void {
