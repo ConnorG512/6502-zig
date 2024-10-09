@@ -88,19 +88,19 @@ const CPU = struct {
                 operand = immediateAddressingMode(self, memory);
             },
             addressingMode.zero_page => {
-                return CPUError.unimplemented_op_code;
+                operand = zeroPageAddressingMode(self, memory);
             },
             addressingMode.zero_page_x => {
-                return CPUError.unimplemented_op_code;
+                operand = zeroPageXAddressingMode(self, memory)
             },
             addressingMode.absolute => {
                 operand = absoluteAddressingMode(CPU, memory);
             },
             addressingMode.absolute_x => {
-                return CPUError.unimplemented_op_code;
+                operand = absoluteXAddressingMode(self, memory);
             },
             addressingMode.absolute_y => {
-                return CPUError.unimplemented_op_code;
+                operand = absoluteYAddressingMode(self, memory);
             },
             addressingMode.indirect_x => {
                 return CPUError.unimplemented_op_code;
