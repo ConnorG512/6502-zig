@@ -75,6 +75,7 @@ pub const CPU = struct {
                 self.RP = 0b00001100;
             },
             0x01 => { 
+                logging.infoLog("0x1 Hit! \n");
             },
             else => {
             }

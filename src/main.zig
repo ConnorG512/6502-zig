@@ -21,7 +21,7 @@ const mem_mod = @import("memory.zig").Memory;
 pub fn main() !void {
     // Creating an instance of the memory struct
     var memory = mem_mod{
-        .mem_array = [_]u8{0} ** 0x10000, // Initialize memory with 64KB of zeroed bytes
+        .mem_array = [_]u8{0x0} ** 0x10000, // Initialize memory with 64KB of zeroed bytes
     }; 
 
     // Creating an instance of the CPU
