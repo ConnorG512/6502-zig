@@ -60,7 +60,7 @@ const cpu_flag = struct {
             return CPUError.null_cpu_ref;
         }
 
-        self.RP = 0b0_0_0_0_1_0_0_0;
+        self.RP = 0b0_0_0_1_0_0_0_0;
     }
 
     fn clearFlag(self: *CPU, flag:u8) !void {
