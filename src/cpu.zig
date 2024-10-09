@@ -48,7 +48,8 @@ const CPU = struct {
         indirect,
         indirect_x, 
         indirect_y,
-        implied };
+        implied 
+    };
 
     const cpuFlag = enum {
         carry_f,
@@ -59,7 +60,7 @@ const CPU = struct {
         unused_f,
         overflow_f,
         negative_f,
-        };
+    };
 
     const CPUError = error {
         null_byte,
