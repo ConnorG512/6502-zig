@@ -37,7 +37,6 @@ const CPU_flag = struct {
 
     pub fn setAllFlags(flag_register: *u8) !void  {
         if (flag_register == null) {
-            logging.errorLog("setAllFlags: Error, CPU flag is null!");
             return CPUFlagError.flagNull;
         }
 
@@ -46,7 +45,6 @@ const CPU_flag = struct {
 
     pub fn clearAllFlags(flag_register: *u8) !void {
         if (flag_register == null) {
-            logging.errorLog("setAllFlags: Error, CPU flag is null!");
             return CPUFlagError.flagNull;
         }
 
@@ -55,7 +53,6 @@ const CPU_flag = struct {
     
     pub fn clearFlag(flag: flagEnum, flag_register: *u8) !void {
         if (flag_register == null) {
-            logging.errorLog("clearAllFlags: Error, CPU flag is null!");
             return CPUFlagError.flagNull; 
         }
 
@@ -86,7 +83,6 @@ const CPU_flag = struct {
 
     pub fn setFlag(flag: flagEnum, flag_register: *u8) !void {
         if (flag_register == null) {
-            logging.errorLog("setFlag: Error, CPU flag is null!");
             return CPUFlagError.flagNull;
         }
 

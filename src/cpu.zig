@@ -72,13 +72,10 @@ pub const CPU = struct {
             // 6502 instruction set
             0x00 => { // BRK
                 self.RP = 0b00001100;
-                logging.infoLog("Break instruction 0x00 !");
             },
             0x01 => { 
-                logging.infoLog("assignInstuction: 0x01 hit!");
             },
             else => {
-                logging.errorLog("assignInstruction: out of bounds!");
             }
         }
     }
@@ -185,7 +182,7 @@ pub const CPU = struct {
     /////////////////////////////////////////////////////////////////////////
     
     fn accumulatorAddressingMode() u16 {
-        logging.errorLog("Uninplemented Instruction!");
+
     }
 
     fn immediateAddressingMode(self: *CPU, memory: *memory_module) u8 {
@@ -244,14 +241,11 @@ pub const CPU = struct {
     }
 
     fn indirectAddressingMode() u16 {
-        logging.errorLog("Uninplemented Instruction!");
     }
 
     fn indexedIndirectAddressingMode() u16 {
-        logging.errorLog("Uninplemented Instruction!");
     }
 
     fn indirectIndexedAddressingMode() u16 {
-        logging.errorLog("Uninplemented Instruction!");
     }
 };
