@@ -92,25 +92,25 @@ const CPU_flag = struct {
 
         switch (flag) {
             flagEnum.carry_f => {
-
+                flag_register |= 0b0_0_0_0_0_0_0_1; // bit 0
             },
             flagEnum.zero_f => {
-
+                flag_register |= 0b0_0_0_0_0_0_1_0; // bit 1
             },
             flagEnum.interrupt_f => {
-
+                flag_register |= 0b0_0_0_0_0_1_0_0; // bit 2
             },
             flagEnum.decimal_f => {
-
+                flag_register |= 0b0_0_0_0_1_0_0_0; // bit 3
             },
             flagEnum.break_f => {
-
+                flag_register |= 0b0_0_0_1_0_0_0_0; // bit 4
             },
             flagEnum.overflow_f => {
-
+                flag_register |= 0b0_1_0_0_0_0_0_0; // bit 6
             },
             flagEnum.negative_f => {
-
+                flag_register |= 0b1_0_0_0_0_0_0_0; // bit 7
             },
         
         }
