@@ -52,7 +52,7 @@ const CPU_flag = struct {
 
         flag_register = 0b0_0_0_1_0_0_0_0; // Set all flags to 0 except bit 5 which is unused
     }
-
+    
     pub fn clearFlag(flag: flagEnum, flag_register: *u8) !void {
         if (flag_register == null) {
             logging.errorLog("clearAllFlags: Error, CPU flag is null!");

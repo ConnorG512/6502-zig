@@ -17,6 +17,7 @@
 const std = @import("std");
 const logging = @import("logging.zig");
 const memory_module = @import("memory.zig").Memory;
+const cpu_flag_module = @import("cpu_flag.zig").CPU_flag;
 
 // CPU Info
 // https://en.wikipedia.org/wiki/MOS_Technology_6502
@@ -60,6 +61,8 @@ const CPU = struct {
         invalid_op_code,
         cpu_flag_overflow,
     };
+
+    const cpu_flags = cpu_flag_module.flagEnum;
 
     pub fn assignInstruction(self: *CPU, memory: []*u8) !void {
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
@@ -128,9 +131,9 @@ const CPU = struct {
 
             // if there is an overflow, the carry flag will need to be set to 1
             if (result > 0xFF) {
-                setFlag(0b0_0_0_0_0_0_0_1);
+                cpu_flag_module.setFlag(cpu_flags.carry_f, &self.RP);
             } else {
-                clearFlag(0b0_0_0_0_0_0_0_1);
+                cpu_flag_module.clearFlag(cpu_flags.carry_f, &self.RP);
             }
 
             // Storing the lower bit value back in the accumulator
