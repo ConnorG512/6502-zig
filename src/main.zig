@@ -15,12 +15,29 @@
 //along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 const std = @import("std");
-const cpu = @import("cpu.zig");
+const cpu_mod = @import("cpu.zig").CPU;
+const mem_mod = @import("memory.zig").Memory;
 
 pub fn main() !void {
+    // Creating an instance of the memory struct
+    var memory = mem_mod{
+        .mem_array = [65536]u8{0}
+    }; 
 
+    // Creating an instance of the CPU
+    var cpu = cpu_mod{
+        .RA = 0,
+        .RP = 0,
+        .RPC = 0,
+        .RS = 0,
+        .RX = 0,
+        .RY = 0,
+    }; 
+
+    cpu.assignInstruction(&memory.mem_array);
 }
 
 test "simple test" {
 
 }
+

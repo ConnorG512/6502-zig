@@ -27,7 +27,7 @@ const cpu_flag_module = @import("cpu_flag.zig").CPU_flag;
 // http://www.6502.org/tutorials/65c02opcodes.html
 // http://www.6502.org/users/obelisk/6502/reference.html
 
-const CPU = struct {
+pub const CPU = struct {
     // Registers 
     RA: u8, // Accumulator register
     RP: u8, // Status register - Only 7 bits are used, bit 5 is always 1. 0C, 1Z, 2I, 3D, 4B, 5 Unused, 6V, 7N
@@ -76,6 +76,7 @@ const CPU = struct {
             // 6502 instruction set
             0x00 => { // BRK
                 self.RP = 0b00001100;
+                logging.infoLog("Break instruction 0x00 !");
             },
             0x01 => { 
 
