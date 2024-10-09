@@ -51,17 +51,6 @@ const CPU = struct {
         implied 
     };
 
-    const cpuFlag = enum {
-        carry_f,
-        zero_f,
-        interrupt_f,
-        decimal_f,
-        break_f,
-        unused_f,
-        overflow_f,
-        negative_f,
-    };
-
     const CPUError = error {
         null_byte,
         null_cpu_ref,
@@ -205,6 +194,12 @@ const CPU = struct {
             return CPUError.null_cpu_ref;
         }
 
+        switch (self.cpuFlag) {
+            cpuflag.carry_f => {
+
+            } 
+
+        }
     }
     
     fn clearAllFlags (self: *CPU) !void {
