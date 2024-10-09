@@ -222,8 +222,11 @@ const CPU = struct {
         return address;
     }
 
-    fn relativeAddressingMode() u16 {
-        logging.errorLog("Uninplemented Instruction!");
+    fn relativeAddressingMode(self: *CPU, memory: *memory_module) u16 {
+        // Getting the relative offset from the bute that is relative to the operand. 
+        const offset: i8 = i8(memory.readByte((self.RPC + 1))); // casting as an signed 8 bit integer
+        const new_address: u16 = u16(self.RPC + 2) + u16(offset);
+        return new_address; // return the calculated address
     }
     
     fn absoluteAddressingMode(self: *CPU, memory: *memory_module) u16 {
