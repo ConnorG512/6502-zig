@@ -42,21 +42,69 @@ const CPU_flag = struct {
         flag_register = 0b1_1_1_1_1_1_1_1; // Setting all flags to 1
     }
 
-    pub fn clearAllFlags(flag_register: *u8) !void {
+    pub fn clearAllFlags(flag: flagEnum, flag_register: *u8) !void {
         if (flag_register == null) {
             logging.errorLog("clearAllFlags: Error, CPU flag is null!");
             return CPUFlagError.flagNull;
+
+            switch (flag) {
+            flagEnum.carry_f => {
+
+            },
+            flagEnum.zero_f => {
+
+            },
+            flagEnum.interrupt_f => {
+
+            },
+            flagEnum.decimal_f => {
+
+            },
+            flagEnum.break_f => {
+
+            },
+            flagEnum.overflow_f => {
+
+            },
+            flagEnum.negative_f => {
+
+            },
+        
+        }
         }
 
         flag_register = 0b0_0_0_1_0_0_0_0; // Set all flags to 0 except bit 5 which is unused
     }
 
-    pub fn setFlag(self: CPU_flag, flag_register: *u8) !void {
+    pub fn setFlag(flag: flagEnum, flag_register: *u8) !void {
         if (flag_register == null) {
             logging.errorLog("setFlag: Error, CPU flag is null!");
             return CPUFlagError.flagNull;
         }
 
-        switch () {}
+        switch (flag) {
+            flagEnum.carry_f => {
+
+            },
+            flagEnum.zero_f => {
+
+            },
+            flagEnum.interrupt_f => {
+
+            },
+            flagEnum.decimal_f => {
+
+            },
+            flagEnum.break_f => {
+
+            },
+            flagEnum.overflow_f => {
+
+            },
+            flagEnum.negative_f => {
+
+            },
+        
+        }
     }
 };
