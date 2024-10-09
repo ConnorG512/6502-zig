@@ -34,7 +34,7 @@ pub fn main() !void {
         .RY = 0,
     }; 
 
-    try cpu.assignInstruction(&memory.mem_array);
+    cpu.assignInstruction(&memory.mem_array);
 }
 
 test "simple test" {

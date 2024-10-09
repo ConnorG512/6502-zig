@@ -64,7 +64,7 @@ pub const CPU = struct {
 
     const cpu_flags = cpu_flag_module.flagEnum;
 
-    pub fn assignInstruction(self: *CPU, memory: *const [65536]u8) !void {
+    pub fn assignInstruction(self: *CPU, memory: *const [65536]u8) void {
         
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
@@ -75,11 +75,15 @@ pub const CPU = struct {
                 logging.infoLog("Break instruction 0x00 !");
             },
             0x01 => { 
-
+                logging.infoLog("assignInstuction: 0x01 hit!");
+            },
+            else => {
+                logging.errorLog("assignInstruction: out of bounds!");
             }
         }
-        
     }
+        
+    
 
     fn addWithCarry(self: *CPU, memory: []*u8, mode:addressingMode) !void {
         var operand: u16 = 0;
