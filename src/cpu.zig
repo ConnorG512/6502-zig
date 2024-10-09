@@ -60,6 +60,17 @@ const CPU = struct {
         indirect_y,
         implied };
 
+    const cpuFlag = enum {
+        carry_f,
+        zero_f,
+        interrupt_f,
+        decimal_f,
+        break_f,
+        unused_f,
+        overflow_f,
+        negative_f,
+        };
+
     pub fn assignInstruction(self: *CPU, memory: []*u8) !void {
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
@@ -143,29 +154,36 @@ const CPU = struct {
         switch (mode) {
             addressingMode.immediate => {
                 operand = immediateAddressingMode(self, memory);
-            }
+            },
             addressingMode.zero_page => {
-                operand = zeroPageAddressingMode(slef, memory);
-            }
+                operand = zeroPageAddressingMode(self, memory);
+            },
             addressingMode.zero_page_x => {
                 operand = zeroPageXAddressingMode(self, memory);
-            }
+            },
             addressingMode.absolute => {
                 operand = absoluteAddressingMode(self, memory);
-            }
+            },
             addressingMode.absolute_x => {
                 operand = absoluteXAddressingMode(self, memory);
-            }
+            },
             addressingMode.absolute_y => {
                 operand = absoluteYAddressingMode(self, memory);
-            }
+            },
             addressingMode.indirect_x => {
                 return CPUError.invalid_addressing_mode;
-            }
+            },
             addressingMode.zero_page => {
                 return CPUError.invalid_addressing_mode;
             }
+
         }
+
+        self.RA &= operand;
+
+        // Setting flags 
+        self.setFlag(0b0_1_000000);
+
     }
 
     // Set flags for functions
@@ -179,19 +197,13 @@ const CPU = struct {
         self.RP = 0b1_1_1_1_1_1_1_1;
     }
 
-    fn setFlag(self: *CPU, flag:u8) !void {
+    fn setFlag(self: *CPU) !void {
+
         if (self == null) {
             logging.errorLog("Error: CPU null reference in setFlag() !");
             return CPUError.null_cpu_ref;
         }
 
-        if (flag > 0b1_1_1_1_1_1_1_1) {
-            logging.errorLog("Error: Flag overflow in setFlag() !");
-            return CPUError.cpu_flag_overflow;
-        }
-
-        // bitwise or (|) operation to set the respective bits to 1
-        self.RP |= flag;
     }
     
     fn clearAllFlags (self: *CPU) !void {
