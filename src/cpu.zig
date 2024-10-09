@@ -26,16 +26,6 @@ const memory_module = @import("memory.zig").Memory;
 // http://www.6502.org/tutorials/65c02opcodes.html
 // http://www.6502.org/users/obelisk/6502/reference.html
 
-const CPUError = error {
-    null_byte,
-    null_cpu_ref,
-    unimplemented_address_pipe,
-    unimplemented_op_code,
-    invalid_addressing_mode,
-    invalid_op_code,
-    cpu_flag_overflow,
-};
-
 const CPU = struct {
     // Registers 
     RA: u8, // Accumulator register
@@ -70,6 +60,16 @@ const CPU = struct {
         overflow_f,
         negative_f,
         };
+
+    const CPUError = error {
+        null_byte,
+        null_cpu_ref,
+        unimplemented_address_pipe,
+        unimplemented_op_code,
+        invalid_addressing_mode,
+        invalid_op_code,
+        cpu_flag_overflow,
+    };
 
     pub fn assignInstruction(self: *CPU, memory: []*u8) !void {
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
