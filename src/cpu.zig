@@ -91,7 +91,7 @@ const CPU = struct {
                 operand = zeroPageAddressingMode(self, memory);
             },
             addressingMode.zero_page_x => {
-                operand = zeroPageXAddressingMode(self, memory)
+                operand = zeroPageXAddressingMode(self, memory);
             },
             addressingMode.absolute => {
                 operand = absoluteAddressingMode(CPU, memory);
