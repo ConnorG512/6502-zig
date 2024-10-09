@@ -34,5 +34,5 @@ pub fn errorLog(message: []const u8) void {
     std.debug.print("{}ERROR: {s}\n", .{red, message});
 }
 pub fn warnLog(message: []const u8) void {
-    std.debug.print("{}ERROR: {s}\n", .{yellow, message});
+    std.debug.print("{}WARN: {s}\n", .{yellow, message});
 }
