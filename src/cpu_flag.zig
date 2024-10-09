@@ -19,14 +19,14 @@ const logging = @import("logging.zig");
 const CPU_flag = struct {
     
     const cpuFlag = enum {
-        carry_f,
-        zero_f,
-        interrupt_f,
-        decimal_f,
-        break_f,
-        unused_f,
-        overflow_f,
-        negative_f,
+        carry_f,        // bit 0
+        zero_f,         // bit 1
+        interrupt_f,    // bit 2
+        decimal_f,      // bit 3
+        break_f,        // bit 4 
+        unused_f,       // bit 5
+        overflow_f,     // bit 6
+        negative_f,     // bit 7
     };
 
     // Set flags for functions
@@ -49,14 +49,14 @@ const CPU_flag = struct {
         self.RP = 0b0_0_0_1_0_0_0_0;
     }
 
-    fn setFlag() !void {
-
+    fn setFlag(self: *CPU_flag) !void {
+        switch (cpuFlag) {
+            
+        }
         
     }
     
-    
-
-    fn clearFlag(self: *CPU, flag:u8) !void {
+    fn clearFlag() !void {
         if (self == null) {
             logging.errorLog("Error: CPU null reference in clearFlag() !");
             return CPUError.null_cpu_ref;
