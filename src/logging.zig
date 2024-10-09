@@ -22,17 +22,17 @@ const red = "\x1b[31m";   // Red text
 const yellow = "\x1b[33m";   // Yellow text
    
 pub fn infoLog(message: []const u8) void {
-    std.debug.print("INFO: {any}\n", .{message});
+    std.debug.print("INFO: {s}\n", .{message});
 }
 pub fn infoPointerLog(message: []const u8, address: *u64) void {
-    std.debug.print("INFO Log: {any}, Address: {p}\n", .{message, address});
+    std.debug.print("INFO Log: {s}, Address: {p}\n", .{message, address});
 }
 pub fn infoDecValueLog(message: []const u8, value: u16) void {
-    std.debug.print("INFO Log: {any}, Address: {d}\n", .{message, value});
+    std.debug.print("INFO Log: {s}, Address: {d}\n", .{message, value});
 }
 pub fn errorLog(message: []const u8) void {
-    std.debug.print("{}ERROR: {any}\n", .{red, message});
+    std.debug.print("{}ERROR: {s}\n", .{red, message});
 }
 pub fn warnLog(message: []const u8) void {
-    std.debug.print("{}ERROR: {any}\n", .{yellow, message});
+    std.debug.print("{}ERROR: {s}\n", .{yellow, message});
 }
