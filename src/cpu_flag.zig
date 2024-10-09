@@ -22,7 +22,7 @@ const CPU_flag = struct {
         flagNull,
     };
     
-    const cpuFlag = enum {
+    const flagEnum = enum {
         carry_f,        // bit 0
         zero_f,         // bit 1
         interrupt_f,    // bit 2
@@ -35,7 +35,7 @@ const CPU_flag = struct {
 
     pub fn setAllFlags(flag_register: *u8) !void  {
         if (flag_register == null) {
-            logging.errorLog("Error, CPU flag is null!");
+            logging.errorLog("setAllFlags: Error, CPU flag is null!");
             return CPUFlagError.flagNull;
         }
 
@@ -44,10 +44,19 @@ const CPU_flag = struct {
 
     pub fn clearAllFlags(flag_register: *u8) !void {
         if (flag_register == null) {
-            logging.errorLog("Error, CPU flag is null!");
+            logging.errorLog("clearAllFlags: Error, CPU flag is null!");
             return CPUFlagError.flagNull;
         }
 
         flag_register = 0b0_0_0_1_0_0_0_0; // Set all flags to 0 except bit 5 which is unused
+    }
+
+    pub fn setFlag(self: CPU_flag, flag_register: *u8) !void {
+        if (flag_register == null) {
+            logging.errorLog("setFlag: Error, CPU flag is null!");
+            return CPUFlagError.flagNull;
+        }
+
+        switch () {}
     }
 };
