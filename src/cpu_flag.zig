@@ -16,7 +16,8 @@
 
 const logging = @import("logging.zig");
 
-const cpu_flag = struct {
+const CPU_flag = struct {
+    
     const cpuFlag = enum {
         carry_f,
         zero_f,
@@ -39,22 +40,7 @@ const cpu_flag = struct {
         self.RP = 0b1_1_1_1_1_1_1_1;
     }
 
-    fn setFlag(self: *CPU) !void {
-
-        if (self == null) {
-            logging.errorLog("Error: CPU null reference in setFlag() !");
-            return CPUError.null_cpu_ref;
-        }
-
-        switch (self.cpuFlag) {
-            cpuflag.carry_f => {
-
-            } 
-
-        }
-    }
-    
-    fn clearAllFlags (self: *CPU) !void {
+    fn clearAllFlags () !void {
         if (self == null) {
             logging.errorLog("Error: CPU null reference in clearAllFlags() !");
             return CPUError.null_cpu_ref;
@@ -62,6 +48,13 @@ const cpu_flag = struct {
 
         self.RP = 0b0_0_0_1_0_0_0_0;
     }
+
+    fn setFlag() !void {
+
+        
+    }
+    
+    
 
     fn clearFlag(self: *CPU, flag:u8) !void {
         if (self == null) {
