@@ -23,7 +23,7 @@ pub const Memory = struct {
     
     pub fn readByte(self: *Memory, address: u16) u8 {
         // Passes the address to read  and returns the byte in memory.
-        logging.infoPointerLog("readByte: address read: ", &address);
+        logging.infoPointerLog("readByte: address read: ", u64(&address));
         return self.mem_array[address];
     }
 
