@@ -14,6 +14,9 @@
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+// http://www.6502.org/users/obelisk/6502/instructions.html
+// http://www.6502.org/users/obelisk/6502/reference.html#LDA
+
 const logging = @import("logging.zig");
 
 pub const CPU_Instruction = struct {
