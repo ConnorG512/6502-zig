@@ -81,9 +81,9 @@ pub const CPU = struct {
         // 0x1B, 
         // 0x1C, 
         // 0x1D, 
-        cpu_instruction_module.ASL,  // 0x1E, Absolute X
+        cpu_instruction_module.ASL, // 0x1E, Absolute X
         // 0x1F,
-        // 0x20, 
+        cpu_instruction_module.JSR, // 0x20, Absolute 
         cpu_instruction_module.AND, // 0x21, Indirect X
         // 0x22, 
         // 0x23, 
