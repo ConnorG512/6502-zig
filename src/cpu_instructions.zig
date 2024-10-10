@@ -190,9 +190,23 @@ pub const CPU_Instruction = struct {
     // Jumps & Calls
     ///////////////////////////////////////
 
+    pub fn JMP() void {
+        logging.infoLog("cpu_instructions: JMP Called!");
+    } 
+
+    pub fn JSR() void {
+        logging.infoLog("cpu_instructions: JSR Called!");
+    } 
+
+    pub fn RTS() void {
+        logging.infoLog("cpu_instructions: RTS Called!");
+    } 
+
     ///////////////////////////////////////
     // Branches
     ///////////////////////////////////////
+
+    
 
     ///////////////////////////////////////
     // Status Flag Changes
