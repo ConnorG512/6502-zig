@@ -37,10 +37,6 @@ pub const CPU = struct {
     RY: u8,   // index register
     RPC: u16, // Program counter
 
-    // Function to use in the array instruction index
-    const instructionFn = fn(Self: *CPU, memory: *const [65536]u8, addressing_mode: *cpu_instruction_module.addressingMode) void;
-    const INSTRUCTION_SET = [255]instructionFn;
-
     const CPUError = error {
         null_byte,
         null_cpu_ref,
@@ -50,6 +46,10 @@ pub const CPU = struct {
         invalid_op_code,
         cpu_flag_overflow,
     };
+
+    // Function to use in the array instruction index
+    const instructionFn = fn(Self: *CPU, memory: *const [65536]u8, addressing_mode: *cpu_instruction_module.addressingMode) void;
+    const INSTRUCTION_SET = [255]instructionFn;
 
     const cpu_flags = cpu_flag_module.flagEnum;
 

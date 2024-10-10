@@ -46,7 +46,7 @@ pub const CPU_Instruction = struct {
         logging.infoLog("cpu_instructions: LDA Called!");
     }
 
-    pub fn LDX() void {
+    pub fn LDX(CPU_inst: *CPU, memory: *const []u8, addressing_mode: *addressingMode) void {
         logging.infoLog("cpu_instructions: LDX Called!");
     }
 
