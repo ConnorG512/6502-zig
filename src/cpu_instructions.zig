@@ -142,6 +142,30 @@ pub const CPU_Instruction = struct {
     // Increments & Decrements
     ///////////////////////////////////////
 
+    pub fn INC() void {
+        logging.infoLog("cpu_instructions: INC Called!");
+    } 
+
+    pub fn INX() void {
+        logging.infoLog("cpu_instructions: INX Called!");
+    } 
+
+    pub fn INY() void {
+        logging.infoLog("cpu_instructions: INY Called!");
+    } 
+
+    pub fn DEC() void {
+        logging.infoLog("cpu_instructions: DEC Called!");
+    } 
+
+    pub fn DEX() void {
+        logging.infoLog("cpu_instructions: DEX Called!");
+    } 
+
+    pub fn DEY() void {
+        logging.infoLog("cpu_instructions: DEY Called!");
+    } 
+
     ///////////////////////////////////////
     // Shifts
     ///////////////////////////////////////
