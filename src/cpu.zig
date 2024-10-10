@@ -51,7 +51,7 @@ pub const CPU = struct {
     const instructionFn = fn(Self: *CPU, memory: *const [65536]u8, addressing_mode: *cpu_instruction_module.addressingMode) void;
     const INSTRUCTION_SET = [255]instructionFn {
 
-        // 0x00, 
+        cpu_instruction_module.BRK, // 0x00, Implied 
         // 0x01, 
         // 0x02, 
         // 0x03, 
