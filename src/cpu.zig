@@ -127,7 +127,7 @@ pub const CPU = struct {
         cpu_instruction_module.EOR, // 0x49, Immediate
         // 0x4A, 
         // 0x4B, 
-        // 0x4C, 
+        cpu_instruction_module.JMP, // 0x4C, Absolute 
         cpu_instruction_module.EOR, // 0x4D, Absolute
         // 0x4E, 
         // 0x4F,
@@ -159,7 +159,7 @@ pub const CPU = struct {
         cpu_instruction_module.ADC, // 0x69, Immediate ADC
         // 0x6A, 
         // 0x6B, 
-        // 0x6C, 
+        cpu_instruction_module.JMP, // 0x6C, Indirect 
         cpu_instruction_module.ADC, // 0x6D, Absolute 
         // 0x6E, 
         // 0x6F,
@@ -251,7 +251,7 @@ pub const CPU = struct {
         cpu_instruction_module.CMP, // 0xC5, Zero Page
         cpu_instruction_module.DEC, // 0xC6, Zero Page
         // 0xC7, 
-        // 0xC8, 
+        cpu_instruction_module.INY, // 0xC8, Implied 
         cpu_instruction_module.CMP, // 0xC9, Immediate
         cpu_instruction_module.DEX, // 0xCA, Implied 
         // 0xCB, 
