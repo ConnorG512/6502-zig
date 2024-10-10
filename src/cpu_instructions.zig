@@ -206,7 +206,37 @@ pub const CPU_Instruction = struct {
     // Branches
     ///////////////////////////////////////
 
-    
+    pub fn BCC() void {
+        logging.infoLog("cpu_instructions: BCC Called!");
+    } 
+
+    pub fn BCS() void {
+        logging.infoLog("cpu_instructions: BCS Called!");
+    } 
+
+    pub fn BEQ() void {
+        logging.infoLog("cpu_instructions: BEQ Called!");
+    } 
+
+    pub fn BMI() void {
+        logging.infoLog("cpu_instructions: BMI Called!");
+    } 
+
+    pub fn BNE() void {
+        logging.infoLog("cpu_instructions: BNE Called!");
+    } 
+
+    pub fn BPL() void {
+        logging.infoLog("cpu_instructions: BPL Called!");
+    } 
+
+    pub fn BVC() void {
+        logging.infoLog("cpu_instructions: BVC Called!");
+    } 
+
+    pub fn BVS() void {
+        logging.infoLog("cpu_instructions: BVS Called!");
+    } 
 
     ///////////////////////////////////////
     // Status Flag Changes
