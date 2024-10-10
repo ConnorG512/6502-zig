@@ -304,7 +304,15 @@ pub const CPU_Instruction = struct {
 
     pub fn RTI() void {
         logging.infoLog("cpu_instructions: RTI Called!");
-    } 
+    }
+
+    ///////////////////////////////////////
+    // Illegal instruction
+    ///////////////////////////////////////
+
+    pub fn illegalInstruction() void {
+        logging.errorLog("cpu_instructions: Illegal instruction!");
+    }
 
     ///////////////////////////////////////
     // ADDRESSING MODES

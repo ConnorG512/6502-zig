@@ -313,7 +313,7 @@ pub const CPU = struct {
 
     pub fn assignInstruction(self: *CPU, memory: *const [65536]u8) void {
         
-        const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
+        memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
     }
 };
