@@ -97,7 +97,23 @@ pub const CPU_Instruction = struct {
     ///////////////////////////////////////
     // Logical
     ///////////////////////////////////////
+     
+    pub fn AND() void {
+        logging.infoLog("cpu_instructions: AND Called!");
+    }
 
+    pub fn EOR() void {
+        logging.infoLog("cpu_instructions: EOR Called!");
+    }
+
+    pub fn ORA() void {
+        logging.infoLog("cpu_instructions: ORA Called!");
+    }
+
+    pub fn BIT() void {
+        logging.infoLog("cpu_instructions: BIT Called!");
+    } 
+    
     ///////////////////////////////////////
     // Arithmetic
     ///////////////////////////////////////
