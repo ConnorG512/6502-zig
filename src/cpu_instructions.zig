@@ -378,11 +378,14 @@ pub const CPU_Instruction = struct {
     }
 
     fn indirectAddressingMode() u16 {
+        logging.infoLog("cpu_instructions: indirect addressing mode finished!");
     }
 
     fn indexedIndirectAddressingMode() u16 {
+        logging.infoLog("cpu_instructions: indexed indirect addressing mode finished!");
     }
 
     fn indirectIndexedAddressingMode() u16 {
+        logging.infoLog("cpu_instructions: indirect indexed addressing mode finished!");
     }
 };
