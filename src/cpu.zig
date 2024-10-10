@@ -67,7 +67,7 @@ pub const CPU = struct {
         // 0x0D, 
         cpu_instruction_module.ASL, // 0x0E, Absolute
         // 0x0F,
-        // 0x10, 
+        cpu_instruction_module.BPL, // 0x10, Relative 
         // 0x11, 
         // 0x12, 
         // 0x13, 
