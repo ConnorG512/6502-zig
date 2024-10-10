@@ -37,12 +37,10 @@ pub const CPU = struct {
     RY: u8,   // index register
     RPC: u16, // Program counter
 
-    INSTRUCTION_TABLE: [256]instructionFn = [_]instructionFn {
-        LDA, // 0x0 
-    },
-
     // Function to use in the array instruction index
     const instructionFn = fn(Self: *CPU, memory: *const [65536]u8, addressing_mode: *cpu_instruction_module.addressingMode) void;
+
+    const INSTRUCTION_SET = [255]instructionFn;
 
     const CPUError = error {
         null_byte,
@@ -60,9 +58,6 @@ pub const CPU = struct {
         
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
-        instructions = INSTRUCTION_TABLE {
-            0x00 
-        };
     }
         
 
