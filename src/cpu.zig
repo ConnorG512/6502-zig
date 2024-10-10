@@ -291,7 +291,7 @@ pub const CPU = struct {
         // 0xED, 
         // 0xEE, 
         // 0xEF,
-        // 0xF0, 
+        cpu_instruction_module.BEQ, // 0xF0, Relative 
         // 0xF1, 
         // 0xF2, 
         // 0xF3, 
