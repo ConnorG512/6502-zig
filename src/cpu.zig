@@ -195,7 +195,7 @@ pub const CPU = struct {
         // 0x8D, 
         // 0x8E, 
         // 0x8F,
-        // 0x90, 
+        cpu_instruction_module.BCC, // 0x90, Relative 
         // 0x91, 
         // 0x92, 
         // 0x93, 
@@ -227,7 +227,7 @@ pub const CPU = struct {
         // 0xAD, 
         // 0xAE, 
         // 0xAF,
-        // 0xB0, 
+        cpu_instruction_module.BCS, // 0xB0, Relative
         // 0xB1, 
         // 0xB2, 
         // 0xB3, 
