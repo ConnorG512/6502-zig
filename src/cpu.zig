@@ -213,11 +213,11 @@ pub const CPU = struct {
         // 0x9F,
         // 0xA0, 
         cpu_instruction_module.LDA, // 0xA1, Indirect X
-        // 0xA2, 
+        cpu_instruction_module.LDX, // 0xA2, Immediate 
         // 0xA3, 
         // 0xA4, 
         cpu_instruction_module.LDA, // 0xA5, Zero Page
-        // 0xA6, 
+        cpu_instruction_module.LDX, // 0xA6, Zero Page
         // 0xA7, 
         // 0xA8, 
         cpu_instruction_module.LDA, // 0xA9, Immediate
@@ -225,7 +225,7 @@ pub const CPU = struct {
         // 0xAB, 
         // 0xAC, 
         cpu_instruction_module.LDA, // 0xAD, Absolute
-        // 0xAE, 
+        cpu_instruction_module.LDX, // 0xAE, Absolute
         // 0xAF,
         cpu_instruction_module.BCS, // 0xB0, Relative
         cpu_instruction_module.LDA, // 0xB1, Indirect Y
@@ -233,7 +233,7 @@ pub const CPU = struct {
         // 0xB3, 
         // 0xB4, 
         cpu_instruction_module.LDA, // 0xB5, Zero Page X
-        // 0xB6, 
+        cpu_instruction_module.LDX, // 0xB6, Zero Page Y
         // 0xB7, 
         cpu_instruction_module.CLV, // 0xB8, Implied 
         cpu_instruction_module.LDA, // 0xB9, Absolute Y
@@ -241,7 +241,7 @@ pub const CPU = struct {
         // 0xBB, 
         // 0xBC, 
         cpu_instruction_module.LDA, // 0xBD, Absolute X
-        // 0xBE, 
+        cpu_instruction_module.LDX, // 0xBE, Absolute Y
         // 0xBF,
         cpu_instruction_module.CPY, // 0xC0, Immediate 
         cpu_instruction_module.CMP, // 0xC1, Indirect X
