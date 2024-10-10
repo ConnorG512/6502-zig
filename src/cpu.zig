@@ -52,35 +52,35 @@ pub const CPU = struct {
     const INSTRUCTION_SET = [255]instructionFn {
 
         cpu_instruction_module.BRK, // 0x00, Implied 
-        // 0x01, 
+        cpu_instruction_module.ORA, // 0x01, Indirect X
         // 0x02, 
         // 0x03, 
         // 0x04, 
-        // 0x05, 
+        cpu_instruction_module.ORA, // 0x05, Zero Page
         cpu_instruction_module.ASL, // 0x06, Zero Page
         // 0x07, 
         // 0x08, 
-        // 0x09,
+        cpu_instruction_module.ORA, // 0x09, Immediate
         cpu_instruction_module.ASL, // 0x0A, Accumulator
         // 0x0B, 
         // 0x0C, 
-        // 0x0D, 
+        cpu_instruction_module.ORA, // 0x0D, Absolute
         cpu_instruction_module.ASL, // 0x0E, Absolute
         // 0x0F,
         cpu_instruction_module.BPL, // 0x10, Relative 
-        // 0x11, 
+        cpu_instruction_module.ORA, // 0x11, Indirect Y
         // 0x12, 
         // 0x13, 
         // 0x14, 
-        // 0x15, 
+        cpu_instruction_module.ORA, // 0x15, Zero Page X
         cpu_instruction_module.ASL, // 0x16, Zero Page X
         // 0x17, 
         cpu_instruction_module.CLC, // 0x18, Implied 
-        // 0x19,
+        cpu_instruction_module.ORA, // 0x19, Absolute Y
         // 0x1A,
         // 0x1B, 
         // 0x1C, 
-        // 0x1D, 
+        cpu_instruction_module.ORA, // 0x1D, Absolute X
         cpu_instruction_module.ASL, // 0x1E, Absolute X
         // 0x1F,
         cpu_instruction_module.JSR, // 0x20, Absolute 
