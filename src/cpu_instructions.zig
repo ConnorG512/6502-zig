@@ -50,25 +50,49 @@ pub const CPU_Instruction = struct {
     // Register transfers
     ///////////////////////////////////////
     
-    pub fn TAX() {
+    pub fn TAX() void {
         logging.infoLog("cpu_instructions: TAX Called!");
     }
 
-    pub fn TAY() {
+    pub fn TAY() void {
         logging.infoLog("cpu_instructions: TAY Called!");
     }
 
-    pub fn TXA() {
+    pub fn TXA() void {
         logging.infoLog("cpu_instructions: TXA Called!");
     }
 
-    pub fn TYA() {
+    pub fn TYA() void {
         logging.infoLog("cpu_instructions: TYA Called!");
     }
-    
+
     ///////////////////////////////////////
     // Stack Operations
     ///////////////////////////////////////
+
+    pub fn TSX() void {
+        logging.infoLog("cpu_instructions: TSX Called!");
+    }
+
+    pub fn TXS() void {
+        logging.infoLog("cpu_instructions: TXS Called!");
+    }
+
+    pub fn PHA() void {
+        logging.infoLog("cpu_instructions: PHA Called!");
+    }
+
+    pub fn PHP() void {
+        logging.infoLog("cpu_instructions: PHP Called!");
+    }
+
+    pub fn PLA() void {
+        logging.infoLog("cpu_instructions: PLA Called!");
+    }
+
+    pub fn PLP() void {
+        logging.infoLog("cpu_instructions: PLP Called!");
+    }
 
     ///////////////////////////////////////
     // Logical
