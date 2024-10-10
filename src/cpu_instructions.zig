@@ -118,6 +118,26 @@ pub const CPU_Instruction = struct {
     // Arithmetic
     ///////////////////////////////////////
 
+    pub fn ADC() void {
+        logging.infoLog("cpu_instructions: ADC Called!");
+    } 
+
+    pub fn SBC() void {
+        logging.infoLog("cpu_instructions: SBC Called!");
+    } 
+
+    pub fn CMP() void {
+        logging.infoLog("cpu_instructions: CMP Called!");
+    } 
+
+    pub fn CPX() void {
+        logging.infoLog("cpu_instructions: CPX Called!");
+    } 
+
+    pub fn CPY() void {
+        logging.infoLog("cpu_instructions: CPY Called!");
+    } 
+
     ///////////////////////////////////////
     // Increments & Decrements
     ///////////////////////////////////////
