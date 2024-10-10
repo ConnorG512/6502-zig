@@ -57,15 +57,15 @@ pub const CPU = struct {
         // 0x03, 
         // 0x04, 
         // 0x05, 
-        // 0x06, 
+        cpu_instruction_module.ASL, // 0x06, Zero Page
         // 0x07, 
         // 0x08, 
         // 0x09,
-        // 0x0A, 
+        cpu_instruction_module.ASL, // 0x0A, Accumulator
         // 0x0B, 
         // 0x0C, 
         // 0x0D, 
-        // 0x0E, 
+        cpu_instruction_module.ASL, // 0x0E, Absolute
         // 0x0F,
         // 0x10, 
         // 0x11, 
@@ -73,7 +73,7 @@ pub const CPU = struct {
         // 0x13, 
         // 0x14, 
         // 0x15, 
-        // 0x16, 
+        cpu_instruction_module.ASL, // 0x16, Zero Page X
         // 0x17, 
         // 0x18, 
         // 0x19,
@@ -81,7 +81,7 @@ pub const CPU = struct {
         // 0x1B, 
         // 0x1C, 
         // 0x1D, 
-        // 0x1E, 
+        cpu_instruction_module.ASL,  // 0x1E, Absolute X
         // 0x1F,
         // 0x20, 
         cpu_instruction_module.AND, // 0x21, Indirect X
