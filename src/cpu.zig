@@ -52,18 +52,9 @@ pub const CPU = struct {
         
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
-        switch (instruction) {
-            // 6502 instruction set
-            0x00 => { // BRK
-            logging.infoLog("Break hit! \n");
-                self.RP = 0b00001100;
-            },
-            0x01 => { 
-                logging.infoLog("0x1 Hit! \n");
-            },
-            else => {
-            }
-        }
+        const INSTRUCTION_TABLE = [255]u8{
+
+        };
     }
         
 
