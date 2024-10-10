@@ -187,7 +187,7 @@ pub const CPU = struct {
         // 0x85, 
         // 0x86, 
         // 0x87, 
-        // 0x88, 
+        cpu_instruction_module.DEY, // 0x88, Implied 
         // 0x89,
         // 0x8A, 
         // 0x8B, 
