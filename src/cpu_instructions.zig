@@ -242,6 +242,34 @@ pub const CPU_Instruction = struct {
     // Status Flag Changes
     ///////////////////////////////////////
 
+    pub fn CLC() void {
+        logging.infoLog("cpu_instructions: CLC Called!");
+    } 
+
+    pub fn CLD() void {
+        logging.infoLog("cpu_instructions: CLD Called!");
+    } 
+
+    pub fn CLI() void {
+        logging.infoLog("cpu_instructions: CLI Called!");
+    } 
+
+    pub fn CLV() void {
+        logging.infoLog("cpu_instructions: CLV Called!");
+    } 
+
+    pub fn SEC() void {
+        logging.infoLog("cpu_instructions: SEC Called!");
+    } 
+
+    pub fn SED() void {
+        logging.infoLog("cpu_instructions: SED Called!");
+    } 
+
+    pub fn SEI() void {
+        logging.infoLog("cpu_instructions: SEI Called!");
+    } 
+
     ///////////////////////////////////////
     // System Functions
     ///////////////////////////////////////
