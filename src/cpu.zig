@@ -75,7 +75,7 @@ pub const CPU = struct {
         // 0x15, 
         cpu_instruction_module.ASL, // 0x16, Zero Page X
         // 0x17, 
-        // 0x18, 
+        cpu_instruction_module.CLC, // 0x18, Implied 
         // 0x19,
         // 0x1A,
         // 0x1B, 
@@ -267,7 +267,7 @@ pub const CPU = struct {
         // 0xD5, 
         // 0xD6, 
         // 0xD7, 
-        // 0xD8, 
+        cpu_instruction_module.CLD, // 0xD8, Implied 
         // 0xD9,
         // 0xDA, 
         // 0xDB, 
