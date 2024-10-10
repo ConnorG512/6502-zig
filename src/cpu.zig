@@ -283,7 +283,7 @@ pub const CPU = struct {
         // 0xE5, 
         cpu_instruction_module.INC, // 0xE6, Zero Page 
         // 0xE7, 
-        // 0xE8, 
+        cpu_instruction_module.INX, // 0xE8, Implied
         // 0xE9,
         // 0xEA, 
         // 0xEB, 
