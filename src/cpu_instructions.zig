@@ -21,6 +21,22 @@ const logging = @import("logging.zig");
 
 pub const CPU_Instruction = struct {
 
+    const addressingMode = enum {
+        accumulator,
+        immediate, 
+        zero_page, 
+        zero_page_x,
+        zero_page_y,
+        relative, 
+        absolute, 
+        absolute_x, 
+        absolute_y, 
+        indirect,
+        indirect_x, 
+        indirect_y,
+        implied 
+    };
+
     ///////////////////////////////////////
     // Load / Store Operations
     ///////////////////////////////////////

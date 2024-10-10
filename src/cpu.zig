@@ -36,22 +36,6 @@ pub const CPU = struct {
     RY: u8, // index register
     RPC: u16, // Program counter
 
-    const addressingMode = enum {
-        accumulator,
-        immediate, 
-        zero_page, 
-        zero_page_x,
-        zero_page_y,
-        relative, 
-        absolute, 
-        absolute_x, 
-        absolute_y, 
-        indirect,
-        indirect_x, 
-        indirect_y,
-        implied 
-    };
-
     const CPUError = error {
         null_byte,
         null_cpu_ref,
