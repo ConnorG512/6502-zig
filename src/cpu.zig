@@ -148,35 +148,35 @@ pub const CPU = struct {
         // 0x5E, 
         // 0x5F,
         // 0x60, 
-        // 0x61, 
+        cpu_instruction_module.ADC, // 0x61, Indirect X ADC
         // 0x62, 
         // 0x63, 
         // 0x64, 
-        // 0x65, 
+        cpu_instruction_module.ADC, // 0x65, Zero Page ADC 
         // 0x66, 
         // 0x67, 
         // 0x68, 
-        // 0x69,
+        cpu_instruction_module.ADC, // 0x69, Immediate ADC
         // 0x6A, 
         // 0x6B, 
         // 0x6C, 
-        // 0x6D, 
+        cpu_instruction_module.ADC, // 0x6D, Absolute 
         // 0x6E, 
         // 0x6F,
         // 0x70, 
-        // 0x71, 
+        cpu_instruction_module.ADC, // 0x71, Indirect Y ADC
         // 0x72, 
         // 0x73, 
         // 0x74, 
-        // 0x75, 
+        cpu_instruction_module.ADC, // 0x75, Zero Page X ADC
         // 0x76, 
         // 0x77, 
         // 0x78, 
-        // 0x79,
+        cpu_instruction_module.ADC, // 0x79, Absolute Y ADC
         // 0x7A, 
         // 0x7B, 
         // 0x7C, 
-        // 0x7D, 
+        cpu_instruction_module.ADC // 0x7D, Absolute X ADC 
         // 0x7E, 
         // 0x7F,
         // 0x80, 
