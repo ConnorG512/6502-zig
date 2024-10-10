@@ -170,6 +170,22 @@ pub const CPU_Instruction = struct {
     // Shifts
     ///////////////////////////////////////
 
+    pub fn ASL() void {
+        logging.infoLog("cpu_instructions: ASL Called!");
+    } 
+    
+    pub fn LSR() void {
+        logging.infoLog("cpu_instructions: LSR Called!");
+    }
+
+    pub fn ROL() void {
+        logging.infoLog("cpu_instructions: ROL Called!");
+    } 
+
+    pub fn ROR() void {
+        logging.infoLog("cpu_instructions: ROR Called!");
+    }  
+
     ///////////////////////////////////////
     // Jumps & Calls
     ///////////////////////////////////////
