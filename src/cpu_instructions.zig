@@ -42,7 +42,7 @@ pub const CPU_Instruction = struct {
     // Load / Store Operations
     ///////////////////////////////////////
     
-    pub fn LDA() void {
+    pub fn LDA(CPU_inst: *CPU, memory: *const []u8, addressing_mode: *addressingMode) void {
         logging.infoLog("cpu_instructions: LDA Called!");
     }
 
