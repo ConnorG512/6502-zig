@@ -42,7 +42,7 @@ pub const CPU = struct {
     },
 
     // Function to use in the array instruction index
-    const instructionFn = fn(Self: *CPU, memory: *const [65536]u8, cpu_instruction_module.addressingMode) void;
+    const instructionFn = fn(Self: *CPU, memory: *const [65536]u8, addressing_mode: *cpu_instruction_module.addressingMode) void;
 
     const CPUError = error {
         null_byte,
