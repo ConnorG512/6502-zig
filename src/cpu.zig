@@ -163,7 +163,7 @@ pub const CPU = struct {
         cpu_instruction_module.ADC, // 0x6D, Absolute 
         // 0x6E, 
         // 0x6F,
-        // 0x70, 
+        cpu_instruction_module.BVS, // 0x70, Relative 
         cpu_instruction_module.ADC, // 0x71, Indirect Y ADC
         // 0x72, 
         // 0x73, 
