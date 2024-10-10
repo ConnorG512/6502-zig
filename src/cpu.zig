@@ -37,6 +37,8 @@ pub const CPU = struct {
     RY: u8,   // index register
     RPC: u16, // Program counter
 
+    const INSTRUCTION_TABLE = [255]u8{};
+
     const CPUError = error {
         null_byte,
         null_cpu_ref,
@@ -53,9 +55,7 @@ pub const CPU = struct {
         
         const instruction = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
 
-        const INSTRUCTION_TABLE = [255]u8{
-
-        };
+        
     }
         
 
