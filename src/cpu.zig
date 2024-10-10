@@ -99,7 +99,7 @@ pub const CPU = struct {
         cpu_instruction_module.AND, // 0x2D, Absolute
         // 0x2E, 
         // 0x2F,
-        // 0x30, 
+        cpu_instruction_module.BMI, // 0x30, Relative 
         cpu_instruction_module.AND, // 0x31, Indirect Y 
         // 0x32, 
         // 0x33, 
