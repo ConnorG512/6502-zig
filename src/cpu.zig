@@ -29,11 +29,11 @@ const cpu_flag_module = @import("cpu_flag.zig").CPU_flag;
 
 pub const CPU = struct {
     // Registers 
-    RA: u8, // Accumulator register
-    RP: u8, // Status register - Only 7 bits are used, bit 5 is always 1. 0C, 1Z, 2I, 3D, 4B, 5 Unused, 6V, 7N
-    RS: u8, // Stack Pointer 
-    RX: u8, // index register
-    RY: u8, // index register
+    RA: u8,   // Accumulator register
+    RP: u8,   // Status register - Only 7 bits are used, bit 5 is always 1. 0C, 1Z, 2I, 3D, 4B, 5 Unused, 6V, 7N
+    RS: u8,   // Stack Pointer 
+    RX: u8,   // index register
+    RY: u8,   // index register
     RPC: u16, // Program counter
 
     const CPUError = error {
@@ -66,102 +66,5 @@ pub const CPU = struct {
         }
     }
         
-    
-
-    fn addWithCarry(self: *CPU, memory: []*u8, mode:addressingMode) !void {
-        var operand: u16 = 0;
-        
-        switch (mode) {
-            addressingMode.immediate => {
-                operand = immediateAddressingMode(self, memory);
-            },
-            addressingMode.zero_page => {
-                operand = zeroPageAddressingMode(self, memory);
-            },
-            addressingMode.zero_page_x => {
-                operand = zeroPageXAddressingMode(self, memory);
-            },
-            addressingMode.absolute => {
-                operand = absoluteAddressingMode(CPU, memory);
-            },
-            addressingMode.absolute_x => {
-                operand = absoluteXAddressingMode(self, memory);
-            },
-            addressingMode.absolute_y => {
-                operand = absoluteYAddressingMode(self, memory);
-            },
-            addressingMode.indirect_x => {
-                return CPUError.unimplemented_op_code;
-            },
-            addressingMode.indirect_y => {
-                return CPUError.unimplemented_op_code;
-            },
-            _ => {
-                return CPUError.invalid_op_code;
-            },
-
-        }
-
-            // The carry flag is set if an overflow occurs
-            // If the flag is set to 1 then set carry as 1 otherwise 0
-            const carry: u8 = if (self.RP & 0b00000001 != 0) {
-                1;
-            } else {
-                0;
-            };
-            
-            // Sum all of the registers together including the carry flag.
-            const result: u16 =  @as(u16, self.RA) + @as(u16, operand) + @as(u16, carry);
-
-            // if there is an overflow, the carry flag will need to be set to 1
-            if (result > 0xFF) {
-                cpu_flag_module.setFlag(cpu_flags.carry_f, &self.RP);
-            } else {
-                cpu_flag_module.clearFlag(cpu_flags.carry_f, &self.RP);
-            }
-
-            // Storing the lower bit value back in the accumulator
-            self.RA = u8(result & 0xFF); 
-
-    }
-
-    fn logicalAND(self: *CPU, memory: []*u8, mode:addressingMode) !void {
-        const operand: u16 = 0;
-
-        switch (mode) {
-            addressingMode.immediate => {
-                operand = immediateAddressingMode(self, memory);
-            },
-            addressingMode.zero_page => {
-                operand = zeroPageAddressingMode(self, memory);
-            },
-            addressingMode.zero_page_x => {
-                operand = zeroPageXAddressingMode(self, memory);
-            },
-            addressingMode.absolute => {
-                operand = absoluteAddressingMode(self, memory);
-            },
-            addressingMode.absolute_x => {
-                operand = absoluteXAddressingMode(self, memory);
-            },
-            addressingMode.absolute_y => {
-                operand = absoluteYAddressingMode(self, memory);
-            },
-            addressingMode.indirect_x => {
-                return CPUError.invalid_addressing_mode;
-            },
-            addressingMode.zero_page => {
-                return CPUError.invalid_addressing_mode;
-            }
-
-        }
-
-        self.RA &= operand;
-
-        // Setting flags 
-        self.setFlag(0b0_1_000000);
-
-    }
-
 
 };
