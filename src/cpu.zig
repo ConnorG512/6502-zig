@@ -131,7 +131,7 @@ pub const CPU = struct {
         // 0x4D, 
         // 0x4E, 
         // 0x4F,
-        // 0x50, 
+        cpu_instruction_module.BVC, // 0x50, Relative
         // 0x51, 
         // 0x52, 
         // 0x53, 
