@@ -273,5 +273,16 @@ pub const CPU_Instruction = struct {
     ///////////////////////////////////////
     // System Functions
     ///////////////////////////////////////
+    
+    pub fn BRK() void {
+        logging.infoLog("cpu_instructions: BRK Called!");
+    } 
 
+    pub fn NOP() void {
+        logging.infoLog("cpu_instructions: NOP Called!");
+    } 
+
+    pub fn RTI() void {
+        logging.infoLog("cpu_instructions: RTI Called!");
+    } 
 };
