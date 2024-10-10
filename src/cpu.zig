@@ -139,7 +139,7 @@ pub const CPU = struct {
         // 0x55, 
         // 0x56, 
         // 0x57, 
-        // 0x58, 
+        cpu_instruction_module.CLI, // 0x58, Implied 
         // 0x59,
         // 0x5A, 
         // 0x5B, 
