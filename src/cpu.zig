@@ -275,11 +275,11 @@ pub const CPU = struct {
         cpu_instruction_module.CMP, // 0xDD, Absolute X
         // 0xDE, 
         // 0xDF,
-        // 0xE0, 
+        cpu_instruction_module.CPX, // 0xE0, Immediate 
         // 0xE1, 
         // 0xE2, 
         // 0xE3, 
-        // 0xE4, 
+        cpu_instruction_module.CPX, // 0xE4, Zero Page
         // 0xE5, 
         // 0xE6, 
         // 0xE7, 
@@ -287,7 +287,7 @@ pub const CPU = struct {
         // 0xE9,
         // 0xEA, 
         // 0xEB, 
-        // 0xEC, 
+        cpu_instruction_module.CPX, // 0xEC, Absolute
         // 0xED, 
         // 0xEE, 
         // 0xEF,
