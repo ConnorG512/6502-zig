@@ -235,7 +235,7 @@ pub const CPU = struct {
         // 0xB5, 
         // 0xB6, 
         // 0xB7, 
-        // 0xB8, 
+        cpu_instruction_module.CLV, // 0xB8, Implied 
         // 0xB9,
         // 0xBA, 
         // 0xBB, 
