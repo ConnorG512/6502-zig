@@ -19,6 +19,7 @@
 
 const CPU = @import("cpu.zig").CPU;
 const logging = @import("logging.zig");
+const std = @import("std");
 
 pub const CPU_Instruction = struct {
 
@@ -42,11 +43,11 @@ pub const CPU_Instruction = struct {
     // Load / Store Operations
     ///////////////////////////////////////
     
-    pub fn LDA(CPU_inst: *CPU, memory: *const []u8, addressing_mode: *addressingMode) void {
+    pub fn LDA() void {
         logging.infoLog("cpu_instructions: LDA Called!");
     }
 
-    pub fn LDX(CPU_inst: *CPU, memory: *const []u8, addressing_mode: *addressingMode) void {
+    pub fn LDX() void {
         logging.infoLog("cpu_instructions: LDX Called!");
     }
 
@@ -310,8 +311,9 @@ pub const CPU_Instruction = struct {
     // Illegal instruction
     ///////////////////////////////////////
 
-    pub fn illegalInstruction() void {
-        logging.errorLog("cpu_instructions: Illegal instruction!");
+    pub fn illegalInstruction(CPU_inst: *CPU, memory: *const []u8, addressing_mode: *addressingMode) void {
+        logging.errorLog("cpu_instructions: Illegal instruction!\n");
+        std.debug.print("CPU: {p}\n Memory: {p}\n, Addressing mode: {p}\n", .{CPU_inst, memory, addressing_mode});
     }
 
     ///////////////////////////////////////
