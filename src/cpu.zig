@@ -219,7 +219,7 @@ pub const CPU = struct {
         cpu_instruction_module.LDA, // 0xA5, Zero Page
         cpu_instruction_module.LDX, // 0xA6, Zero Page
         // 0xA7, 
-        // 0xA8, 
+        cpu_instruction_module.TAY, // 0xA8, Implied 
         cpu_instruction_module.LDA, // 0xA9, Immediate
         cpu_instruction_module.TAX, // 0xAA, Implied 
         // 0xAB, 
