@@ -20,6 +20,7 @@
 const CPU = @import("cpu.zig").CPU;
 const logging = @import("logging.zig");
 const std = @import("std");
+const cpu_flag = @import("cpu_flag.zig").CPU_flag;
 
 pub const CPU_Instruction = struct {
 
@@ -295,8 +296,10 @@ pub const CPU_Instruction = struct {
     // System Functions
     ///////////////////////////////////////
     
-    pub fn BRK() void {
+    pub fn BRK(CPU_inst: *CPU, memory: *const []u8, addressing_mode: *addressingMode) void {
         logging.infoLog("cpu_instructions: BRK Called!");
+        
+        cpu_flag.setFlag(cpu_flag.flagEnum.interrupt_f, CPU_inst.RP);
     } 
 
     pub fn NOP() void {

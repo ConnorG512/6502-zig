@@ -315,7 +315,7 @@ pub const CPU = struct {
         
         const instruction_byte: u8 = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
         const instruction = INSTRUCTION_SET[instruction_byte];
-        instruction(self, memory_module, &cpu_instruction_module.addressingMode);
+        instruction(&self, &memory_module, &cpu_instruction_module.addressingMode);
 
     }
 };

@@ -24,7 +24,7 @@ const CPU_flag = struct {
     
     // flags are represented from right to left.
     // right most side = 0, left most sife 7.
-    const flagEnum = enum {
+    pub const flagEnum = enum {
         carry_f,        // bit 0
         zero_f,         // bit 1
         interrupt_f,    // bit 2
