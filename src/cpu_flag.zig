@@ -16,7 +16,7 @@
 
 const logging = @import("logging.zig");
 
-const CPU_flag = struct {
+pub const CPU_flag = struct {
 
     const CPUFlagError = error {
         flagNull,
@@ -51,11 +51,8 @@ const CPU_flag = struct {
         flag_register = 0b0_0_0_1_0_0_0_0; // Set all flags to 0 except bit 5 which is unused
     }
     
-    pub fn clearFlag(flag: flagEnum, flag_register: *u8) !void {
-        if (flag_register == null) {
-            return CPUFlagError.flagNull; 
-        }
-
+    pub fn clearFlag(flag: flagEnum, flag_register: *u8) void {
+       
         switch (flag) {
             flagEnum.carry_f => {
                 flag_register &= ~0b0_0_0_0_0_0_0_1; // bit 0
@@ -72,6 +69,9 @@ const CPU_flag = struct {
             flagEnum.break_f => {
                 flag_register &= ~0b0_0_0_1_0_0_0_0; // bit 4
             },
+            flagEnum.unused_f => {
+                logging.infoLog("cpu_flag: Unused flag triggered!\n");
+            },
             flagEnum.overflow_f => {
                 flag_register &= ~0b0_1_0_0_0_0_0_0; // bit 6
             },
@@ -81,11 +81,8 @@ const CPU_flag = struct {
         }
     }
 
-    pub fn setFlag(flag: flagEnum, flag_register: *u8) !void {
-        if (flag_register == null) {
-            return CPUFlagError.flagNull;
-        }
-
+    pub fn setFlag(flag: flagEnum, flag_register: *u8) void {
+        
         switch (flag) {
             flagEnum.carry_f => {
                 flag_register |= 0b0_0_0_0_0_0_0_1; // bit 0
@@ -101,6 +98,9 @@ const CPU_flag = struct {
             },
             flagEnum.break_f => {
                 flag_register |= 0b0_0_0_1_0_0_0_0; // bit 4
+            },
+            flagEnum.unused_f => {
+                logging.infoLog("cpu_flag: Unused flag triggered!\n");
             },
             flagEnum.overflow_f => {
                 flag_register |= 0b0_1_0_0_0_0_0_0; // bit 6
