@@ -107,7 +107,7 @@ pub const CPU = struct {
         cpu_instruction_module.AND, // 0x35, Zero Page X
         cpu_instruction_module.ROL, // 0x36, Zero Page X
         // 0x37, 
-        // 0x38, 
+        cpu_instruction_module.SEC, // 0x38, Implied 
         cpu_instruction_module.AND, // 0x39, Absolute Y
         // 0x3A, 
         // 0x3B, 
