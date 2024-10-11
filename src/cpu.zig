@@ -171,7 +171,7 @@ pub const CPU = struct {
         cpu_instruction_module.ADC, // 0x75, Zero Page X ADC
         cpu_instruction_module.ROR, // 0x76, Zero Page X
         // 0x77, 
-        // 0x78, 
+        cpu_instruction_module.SEI, // 0x78, Implied
         cpu_instruction_module.ADC, // 0x79, Absolute Y ADC
         // 0x7A, 
         // 0x7B, 
