@@ -221,7 +221,7 @@ pub const CPU = struct {
         // 0xA7, 
         // 0xA8, 
         cpu_instruction_module.LDA, // 0xA9, Immediate
-        // 0xAA, 
+        cpu_instruction_module.TAX, // 0xAA, Implied 
         // 0xAB, 
         cpu_instruction_module.LDY, // 0xAC, Absolute
         cpu_instruction_module.LDA, // 0xAD, Absolute
