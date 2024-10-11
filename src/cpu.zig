@@ -48,7 +48,7 @@ pub const CPU = struct {
     };
 
     // Function to use in the array instruction index
-    const instructionFn = fn(Self: *CPU, memory: *const [65536]u8, addressing_mode: *cpu_instruction_module.addressingMode) void;
+    const instructionFn = *const fn(Self: *CPU, memory: *const [65536]u8, addressing_mode: *cpu_instruction_module.addressingMode) void;
     pub const INSTRUCTION_SET = [256]instructionFn {
 
         cpu_instruction_module.BRK, // 0x00, Implied 
