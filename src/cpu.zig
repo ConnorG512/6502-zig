@@ -153,15 +153,15 @@ pub const CPU = struct {
         // 0x63, 
         // 0x64, 
         cpu_instruction_module.ADC, // 0x65, Zero Page ADC 
-        // 0x66, 
+        cpu_instruction_module.ROR, // 0x66, Zero Page
         // 0x67, 
         cpu_instruction_module.PLA, // 0x68, Implied 
         cpu_instruction_module.ADC, // 0x69, Immediate ADC
-        // 0x6A, 
+        cpu_instruction_module.ROR, // 0x6A, Accumulator 
         // 0x6B, 
         cpu_instruction_module.JMP, // 0x6C, Indirect 
         cpu_instruction_module.ADC, // 0x6D, Absolute 
-        // 0x6E, 
+        cpu_instruction_module.ROR, // 0x6E, Absolute
         // 0x6F,
         cpu_instruction_module.BVS, // 0x70, Relative 
         cpu_instruction_module.ADC, // 0x71, Indirect Y ADC
@@ -169,7 +169,7 @@ pub const CPU = struct {
         // 0x73, 
         // 0x74, 
         cpu_instruction_module.ADC, // 0x75, Zero Page X ADC
-        // 0x76, 
+        cpu_instruction_module.ROR, // 0x76, Zero Page X
         // 0x77, 
         // 0x78, 
         cpu_instruction_module.ADC, // 0x79, Absolute Y ADC
@@ -177,7 +177,7 @@ pub const CPU = struct {
         // 0x7B, 
         // 0x7C, 
         cpu_instruction_module.ADC, // 0x7D, Absolute X ADC 
-        // 0x7E, 
+        cpu_instruction_module.ROR, // 0x7E, Absolute X
         // 0x7F,
         // 0x80, 
         // 0x81, 
