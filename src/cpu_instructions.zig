@@ -298,8 +298,13 @@ pub const CPU_Instruction = struct {
     
     pub fn BRK(CPU_inst: *CPU, memory: *const []u8, addressing_mode: *addressingMode) void {
         logging.infoLog("cpu_instructions: BRK Called!");
-        
+        switch (addressing_mode) {
+            addressing_mode.implied => {
+
+            }
+        }
         cpu_flag.setFlag(cpu_flag.flagEnum.interrupt_f, CPU_inst.RP);
+        memory[CPU_inst.RPC + 1];
     } 
 
     pub fn NOP() void {
