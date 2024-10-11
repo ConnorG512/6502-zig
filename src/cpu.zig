@@ -123,7 +123,7 @@ pub const CPU = struct {
         cpu_instruction_module.EOR, // 0x45, Zero Page 
         cpu_instruction_module.LSR, // 0x46, Zero Page
         // 0x47, 
-        // 0x48, 
+        cpu_instruction_module.PHA, // 0x48, Implied 
         cpu_instruction_module.EOR, // 0x49, Immediate
         cpu_instruction_module.LSR, // 0x4A, Accumulator
         // 0x4B, 
