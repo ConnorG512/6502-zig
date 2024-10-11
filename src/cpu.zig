@@ -59,7 +59,7 @@ pub const CPU = struct {
         cpu_instruction_module.ORA, // 0x05, Zero Page
         cpu_instruction_module.ASL, // 0x06, Zero Page
         // 0x07, 
-        // 0x08, 
+        cpu_instruction_module.PHP,  // 0x08, Implied 
         cpu_instruction_module.ORA, // 0x09, Immediate
         cpu_instruction_module.ASL, // 0x0A, Accumulator
         // 0x0B, 
