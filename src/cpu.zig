@@ -25,7 +25,7 @@ const cpu_instruction_module = @import("cpu_instructions.zig").CPU_Instruction;
 // http://www.6502.org/users/obelisk/6502/instructions.html
 // https://www.ahl27.com/posts/2023/01/6502-emu1/
 // https://archive.org/details/mos_microcomputers_programming_manual
-// http://www.6502.org/tutorials/65c02opcodes.html
+// http://www.6502.org/tutorials/65c02memorys.html
 // http://www.6502.org/users/obelisk/6502/reference.html
 
 pub const CPU = struct {
@@ -311,9 +311,11 @@ pub const CPU = struct {
 
     const cpu_flags = cpu_flag_module.flagEnum;
 
-    pub fn assignInstruction(self: *CPU, memory: *const [65536]u8) void {
+    pub fn initializeInstruction(self: *CPU, memory: *const [65536]u8) void {
         
-        memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
+        const instruction_byte: u8 = memory[self.RPC]; // Instructions can be multiple bytes and will need to be stored to understand the full instruction.
+        const instruction = INSTRUCTION_SET[instruction_byte];
+        instruction(self, memory_module, &cpu_instruction_module.addressingMode);
 
     }
 };
