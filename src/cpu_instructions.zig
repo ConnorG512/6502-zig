@@ -296,7 +296,7 @@ pub const CPU_Instruction = struct {
     // System Functions
     ///////////////////////////////////////
     
-    pub fn BRK(CPU_inst: *CPU, memory: *const []u8, addressing_mode: *addressingMode) void {
+    pub fn BRK(CPU_inst: *CPU, memory: *const [65536]u8, addressing_mode: *addressingMode) void {
         logging.infoLog("cpu_instructions: BRK Called!");
         switch (addressing_mode) {
             addressing_mode.implied => {
