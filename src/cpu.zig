@@ -205,7 +205,7 @@ pub const CPU = struct {
         // 0x97, 
         // 0x98, 
         cpu_instruction_module.STA, // 0x99, Absolute Y
-        // 0x9A, 
+        cpu_instruction_module.TXS, // 0x9A, Implied 
         // 0x9B, 
         // 0x9C, 
         cpu_instruction_module.STA, // 0x9D, Absolute X 
