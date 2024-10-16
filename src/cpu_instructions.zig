@@ -30,7 +30,7 @@ pub const CPU_Instruction = struct {
     // Load / Store Operations
     ///////////////////////////////////////
     
-    pub fn LDA(cpu: *CPU, memory: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn LDA(cpu: *CPU, memory: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: LDA Called!");
         // Fetching the next byte in memory so it is not collecting the opcode
         const address: u16 = cpu.RPC + 1;
@@ -41,27 +41,27 @@ pub const CPU_Instruction = struct {
         cpu.RPC += 2;
     }
 
-    pub fn LDX(cpu: *CPU, memory: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn LDX(cpu: *CPU, memory: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: LDX Called!");
         const address: u16 = cpu.RPC + 1;
         cpu.RX = memory_module.readByte(memory, address);
     }
 
-    pub fn LDY(cpu: *CPU, memory: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn LDY(cpu: *CPU, memory: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: LDY Called!");
         const address: u16 = cpu.RPC + 1;
         cpu.RY = memory_module.readByte(memory, address);
     }
 
-    pub fn STA(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn STA(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: STA Called!");
     }
 
-    pub fn STX(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn STX(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: STX Called!");
     }
 
-    pub fn STY(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn STY(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: STY Called!");
     }
 
@@ -69,19 +69,19 @@ pub const CPU_Instruction = struct {
     // Register transfers
     ///////////////////////////////////////
     
-    pub fn TAX(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn TAX(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: TAX Called!");
     }
 
-    pub fn TAY(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn TAY(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: TAY Called!");
     }
 
-    pub fn TXA(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn TXA(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: TXA Called!");
     }
 
-    pub fn TYA(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn TYA(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: TYA Called!");
     }
 
@@ -89,27 +89,27 @@ pub const CPU_Instruction = struct {
     // Stack Operations
     ///////////////////////////////////////
 
-    pub fn TSX(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn TSX(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: TSX Called!");
     }
 
-    pub fn TXS(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn TXS(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: TXS Called!");
     }
 
-    pub fn PHA(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn PHA(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: PHA Called!");
     }
 
-    pub fn PHP(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn PHP(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: PHP Called!");
     }
 
-    pub fn PLA(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn PLA(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: PLA Called!");
     }
 
-    pub fn PLP(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn PLP(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: PLP Called!");
     }
 
@@ -117,19 +117,19 @@ pub const CPU_Instruction = struct {
     // Logical
     ///////////////////////////////////////
      
-    pub fn AND(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn AND(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: AND Called!");
     }
 
-    pub fn EOR(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn EOR(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: EOR Called!");
     }
 
-    pub fn ORA(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn ORA(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: ORA Called!");
     }
 
-    pub fn BIT(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn BIT(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BIT Called!");
     } 
     
@@ -137,23 +137,23 @@ pub const CPU_Instruction = struct {
     // Arithmetic
     ///////////////////////////////////////
 
-    pub fn ADC(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn ADC(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: ADC Called!");
     } 
 
-    pub fn SBC(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn SBC(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: SBC Called!");
     } 
 
-    pub fn CMP(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn CMP(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: CMP Called!");
     } 
 
-    pub fn CPX(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn CPX(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: CPX Called!");
     } 
 
-    pub fn CPY(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn CPY(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: CPY Called!");
     } 
 
@@ -161,27 +161,27 @@ pub const CPU_Instruction = struct {
     // Increments & Decrements
     ///////////////////////////////////////
 
-    pub fn INC(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn INC(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: INC Called!");
     } 
 
-    pub fn INX(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn INX(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: INX Called!");
     } 
 
-    pub fn INY(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn INY(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: INY Called!");
     } 
 
-    pub fn DEC(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn DEC(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: DEC Called!");
     } 
 
-    pub fn DEX(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn DEX(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: DEX Called!");
     } 
 
-    pub fn DEY(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn DEY(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: DEY Called!");
     } 
 
@@ -189,19 +189,19 @@ pub const CPU_Instruction = struct {
     // Shifts
     ///////////////////////////////////////
 
-    pub fn ASL(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn ASL(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: ASL Called!");
     } 
     
-    pub fn LSR(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn LSR(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: LSR Called!");
     }
 
-    pub fn ROL(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn ROL(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: ROL Called!");
     } 
 
-    pub fn ROR(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn ROR(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: ROR Called!");
     }  
 
@@ -209,15 +209,15 @@ pub const CPU_Instruction = struct {
     // Jumps & Calls
     ///////////////////////////////////////
 
-    pub fn JMP(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn JMP(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: JMP Called!");
     } 
 
-    pub fn JSR(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn JSR(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: JSR Called!");
     } 
 
-    pub fn RTS(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn RTS(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: RTS Called!");
     } 
 
@@ -225,35 +225,35 @@ pub const CPU_Instruction = struct {
     // Branches
     ///////////////////////////////////////
 
-    pub fn BCC(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn BCC(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BCC Called!");
     } 
 
-    pub fn BCS(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn BCS(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BCS Called!");
     } 
 
-    pub fn BEQ(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn BEQ(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BEQ Called!");
     } 
 
-    pub fn BMI(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn BMI(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BMI Called!");
     } 
 
-    pub fn BNE(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn BNE(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BNE Called!");
     } 
 
-    pub fn BPL(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn BPL(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BPL Called!");
     } 
 
-    pub fn BVC(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn BVC(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BVC Called!");
     } 
 
-    pub fn BVS(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn BVS(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BVS Called!");
     } 
 
@@ -261,31 +261,31 @@ pub const CPU_Instruction = struct {
     // Status Flag Changes
     ///////////////////////////////////////
 
-    pub fn CLC(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn CLC(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: CLC Called!");
     } 
 
-    pub fn CLD(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn CLD(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: CLD Called!");
     } 
 
-    pub fn CLI(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn CLI(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: CLI Called!");
     } 
 
-    pub fn CLV(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn CLV(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: CLV Called!");
     } 
 
-    pub fn SEC(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn SEC(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: SEC Called!");
     } 
 
-    pub fn SED(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn SED(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: SED Called!");
     } 
 
-    pub fn SEI(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn SEI(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: SEI Called!");
     } 
 
@@ -293,24 +293,18 @@ pub const CPU_Instruction = struct {
     // System Functions
     ///////////////////////////////////////
     
-    pub fn BRK(CPU_inst: *CPU, memory: *const [65536]u8, addressing_mode: cpu_addressing_mode.addressingMode) void {
+    pub fn BRK(CPU_inst: *CPU, memory: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: BRK Called!");
         
-        if (addressing_mode == cpu_addressing_mode.addressingMode.implied) {
-
-        } else {
-
-        }
-
         cpu_flag.setFlag(cpu_flag.flagEnum.interrupt_f, &CPU_inst.RP);
         CPU_inst.RPC = memory[CPU_inst.RPC + 1];
     } 
 
-    pub fn NOP(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn NOP(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: NOP Called!");
     } 
 
-    pub fn RTI(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn RTI(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.infoLog("cpu_instructions: RTI Called!");
     }
 
@@ -318,7 +312,7 @@ pub const CPU_Instruction = struct {
     // Illegal instruction
     ///////////////////////////////////////
 
-    pub fn illegalInstruction(_: *CPU, _: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
+    pub fn illegalInstruction(_: *CPU, _: *const [65536]u8, _: *u8) void {
         logging.errorLog("Illegal instruction called!");
     }
 
