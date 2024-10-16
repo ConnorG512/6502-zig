@@ -142,7 +142,7 @@ pub const CPU_Instruction = struct {
         const address = cpu.RPC + 1;
         const result = cpu.RA + memory_module.readByte(memory, address);
         if (result > 0xFF) {
-            cpu_flag.setFlag(cpu_flag.carry_f, cpu.RP);
+            cpu_flag.setFlag(cpu_flag.flagEnum.carry_f, cpu.RP);
         }
         cpu.RA = result;
         cpu.RPC += byte_length;
