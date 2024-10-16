@@ -72,7 +72,7 @@ pub const AddressingModes = struct {
     fn immediateAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16 {
         const operand: u8 = memory.readByte(CPU_inst.RPC + 1); // Dereferencing the value in the array 
         CPU_inst.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
-        byte_length = 2;    
+        byte_length.* = 2;    
         logging.infoLog("cpu_addressingModes: immediate addressing mode finished!");
         return operand;
     }
@@ -81,7 +81,7 @@ pub const AddressingModes = struct {
         const address: u16 = memory.readByte(CPU_inst.RPC); // Read address from counter
         const value: u8 = memory.readByte(address); // Read value from zero page address
         CPU_inst.RPC += 1; // Increment program counter by 1, zero-page only uses 1 byte
-        byte_length = 2;
+        byte_length.* = 2;
         logging.infoLog("cpu_addressingModes: zero page addressing mode finished!");
         return value; 
     }
@@ -89,7 +89,7 @@ pub const AddressingModes = struct {
     fn zeroPageXAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16 {
         const base_address: u8 = memory.readByte(CPU_inst.RPC + 1); // Fetch a Zero Page address
         const address: u16 = (base_address + CPU_inst.RX) & 0xFF; // Adding and wrapping X to 8 bits
-        byte_length = 2;
+        byte_length.* = 2;
         logging.infoLog("cpu_addressingModes: zero page x addressing mode finished!");
         return address;
     }
@@ -97,7 +97,7 @@ pub const AddressingModes = struct {
     fn zeroPageYAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16 {
         const base_address: u8 = memory.readByte(CPU_inst.RPC + 1); // Fetch a Zero Page address
         const address: u16 = (base_address + CPU_inst.RY) & 0xFF; // Adding and wrapping X to 8 bits
-        byte_length = 2;
+        byte_length.* = 2;
         logging.infoLog("cpu_addressingModes: zero page y addressing mode finished!");
         return address;
     }
@@ -116,7 +116,7 @@ pub const AddressingModes = struct {
         const high_byte: u8 = memory.readByte(CPU_inst.RPC + 2); // Fetching the high byte
         CPU_inst.RPC += 3; // Moving the program counter 3 spaces forward
         const result: u16 = (high_byte << 8 | low_byte);
-        byte_length = 3;
+        byte_length.* = 3;
         logging.infoLog("cpu_addressingModes: absolute addressing mode finished!");
         return result;
     }
@@ -124,7 +124,7 @@ pub const AddressingModes = struct {
     fn absoluteXAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16 {
         const base_address: u16 = memory.readWord(CPU_inst.RPC + 1); // Fetching the absolute address
         const address: u16 = base_address + CPU_inst.RY; // Add Y Register
-        byte_length = 3;
+        byte_length.* = 3;
         logging.infoLog("cpu_addressingModes: absolute x addressing mode finished!");
         return address;
     }
@@ -133,7 +133,7 @@ pub const AddressingModes = struct {
         const base_address: u16 = memory.readWord(CPU_inst.RPC + 1); // Fetching the absolute address
         const address: u16 = base_address + CPU_inst.RX; // Add X Register
         logging.infoLog("cpu_addressingModes: absolute y addressing mode finished!");
-        byte_length = 3;
+        byte_length.* = 3;
         return address;
     }
 
