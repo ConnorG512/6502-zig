@@ -18,7 +18,7 @@ const cpu = @import("cpu.zig").CPU;
 const memory_module = @import("memory.zig").Memory;
 const logging = @import("logging.zig");
 
-const AddressingModes = struct {
+pub const AddressingModes = struct {
 
     pub const addressingMode = enum {
         accumulator,
