@@ -137,8 +137,15 @@ pub const CPU_Instruction = struct {
     // Arithmetic
     ///////////////////////////////////////
 
-    pub fn ADC(_: *CPU, _: *const [65536]u8, _: *u8) void {
+    pub fn ADC(cpu: *CPU, memory: *const [65536]u8, byte_length: *u8) void {
         logging.infoLog("cpu_instructions: ADC Called!");
+        const address = cpu.RPC + 1;
+        const result = cpu.RA + memory_module.readByte(memory, address);
+        if (result > 0xFF) {
+            cpu_flag.setFlag(cpu_flag.carry_f, cpu.RP);
+        }
+        cpu.RA = result;
+        cpu.RPC += byte_length;
     } 
 
     pub fn SBC(_: *CPU, _: *const [65536]u8, _: *u8) void {
