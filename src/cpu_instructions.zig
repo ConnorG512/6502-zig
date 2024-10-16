@@ -144,6 +144,9 @@ pub const CPU_Instruction = struct {
         if (result > 0xFF) {
             cpu_flag.setFlag(cpu_flag.flagEnum.carry_f, cpu.RP);
         }
+        if (result == 0x0) {
+            cpu_flag.setFlag(cpu_flag.flagEnum.zero_f, cpu.RP);
+        }
         cpu.RA = result;
         cpu.RPC += byte_length;
     } 
