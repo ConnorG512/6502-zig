@@ -55,14 +55,24 @@ const AddressingModes = struct {
         illegalAddressingMode,         // 0xD
     };
 
-    fn accumulatorAddressingMode() u16 {
+    pub fn callAddressingMode() void {
+
+    }
+
+    //////////////////////////////////////////
+    /// ADDRESSING MODES
+    //////////////////////////////////////////
+
+
+    fn accumulatorAddressingMode(_: *cpu, _: *const []u8, _: *u8) u16 {
+        logging.infoLog("cpu_addressingModes: accumulator addressing mode finished!");
     }
 
     fn immediateAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16 {
         const operand: u8 = memory.readByte(CPU_inst.RPC + 1); // Dereferencing the value in the array 
         CPU_inst.RPC += 2; // Move the program counter forward by 2 bytes to vover the opcode and the operand
         byte_length = 2;    
-        logging.infoLog("cpu_instructions: immediate addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: immediate addressing mode finished!");
         return operand;
     }
 
@@ -71,7 +81,7 @@ const AddressingModes = struct {
         const value: u8 = memory.readByte(address); // Read value from zero page address
         CPU_inst.RPC += 1; // Increment program counter by 1, zero-page only uses 1 byte
         byte_length = 2;
-        logging.infoLog("cpu_instructions: zero page addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: zero page addressing mode finished!");
         return value; 
     }
 
@@ -79,7 +89,7 @@ const AddressingModes = struct {
         const base_address: u8 = memory.readByte(CPU_inst.RPC + 1); // Fetch a Zero Page address
         const address: u16 = (base_address + CPU_inst.RX) & 0xFF; // Adding and wrapping X to 8 bits
         byte_length = 2;
-        logging.infoLog("cpu_instructions: zero page x addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: zero page x addressing mode finished!");
         return address;
     }
 
@@ -87,7 +97,7 @@ const AddressingModes = struct {
         const base_address: u8 = memory.readByte(CPU_inst.RPC + 1); // Fetch a Zero Page address
         const address: u16 = (base_address + CPU_inst.RY) & 0xFF; // Adding and wrapping X to 8 bits
         byte_length = 2;
-        logging.infoLog("cpu_instructions: zero page y addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: zero page y addressing mode finished!");
         return address;
     }
 
@@ -95,7 +105,7 @@ const AddressingModes = struct {
         // Getting the relative offset from the bute that is relative to the operand. 
         const offset: i8 = i8(memory.readByte((CPU_inst.RPC + 1))); // casting as an signed 8 bit integer
         const new_address: u16 = u16(CPU_inst.RPC + 2) + u16(offset);
-        logging.infoLog("cpu_instructions: relative addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: relative addressing mode finished!");
         return new_address; // return the calculated address
     }
     
@@ -106,7 +116,7 @@ const AddressingModes = struct {
         CPU_inst.RPC += 3; // Moving the program counter 3 spaces forward
         const result: u16 = (high_byte << 8 | low_byte);
         byte_length = 3;
-        logging.infoLog("cpu_instructions: absolute addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: absolute addressing mode finished!");
         return result;
     }
 
@@ -114,35 +124,35 @@ const AddressingModes = struct {
         const base_address: u16 = memory.readWord(CPU_inst.RPC + 1); // Fetching the absolute address
         const address: u16 = base_address + CPU_inst.RY; // Add Y Register
         byte_length = 3;
-        logging.infoLog("cpu_instructions: absolute x addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: absolute x addressing mode finished!");
         return address;
     }
 
     fn absoluteYAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16{
         const base_address: u16 = memory.readWord(CPU_inst.RPC + 1); // Fetching the absolute address
         const address: u16 = base_address + CPU_inst.RX; // Add X Register
-        logging.infoLog("cpu_instructions: absolute y addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: absolute y addressing mode finished!");
         byte_length = 3;
         return address;
     }
 
     fn indirectAddressingMode(_: *cpu, _: *const []u8, _: *u8) u16 {
-        logging.infoLog("cpu_instructions: indirect addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: indirect addressing mode finished!");
     }
 
     fn indexedIndirectAddressingMode(_: *cpu, _: *const []u8, _: *u8) u16 {
-        logging.infoLog("cpu_instructions: indexed indirect addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: indexed indirect addressing mode finished!");
     }
 
     fn indirectIndexedAddressingMode(_: *cpu, _: *const []u8, _: *u8) u16 {
-        logging.infoLog("cpu_instructions: indirect indexed addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: indirect indexed addressing mode finished!");
     }
     
     fn impliedAddressingMode(_: *cpu, _: *const []u8, _: *u8) u16 {
-        logging.infoLog("cpu_instructions: implied addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: implied addressing mode finished!");
     }
 
     fn illegalAddressingMode(_: *cpu, _: *const []u8, _: *u8) u16 {
-        logging.infoLog("cpu_instructions: illegal addressing mode finished!");
+        logging.infoLog("cpu_addressingModes: illegal addressing mode finished!");
     }
 };
