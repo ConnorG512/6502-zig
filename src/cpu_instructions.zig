@@ -330,7 +330,7 @@ pub const CPU_Instruction = struct {
     ///////////////////////////////////////
 
     pub fn illegalInstruction(_: *CPU, _: *const [65536]u8, _: addressingMode) void {
-        
+        logging.errorLog("Illegal instruction called!");
     }
 
     ///////////////////////////////////////
