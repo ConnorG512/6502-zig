@@ -55,7 +55,7 @@ pub const CPU_flag = struct {
        
         switch (flag) {
 
-            // The pointer needs to be dereferenced with .* when passed in
+            // The pointer inside of the struct needs to be dereferenced with .*
             flagEnum.carry_f => {
                 flag_register.* &= ~0b0_0_0_0_0_0_0_1; // bit 0
             },
