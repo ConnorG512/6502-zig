@@ -93,7 +93,7 @@ const AddressingModes = struct {
         return address;
     }
 
-    fn zeroPageYAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16{
+    fn zeroPageYAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16 {
         const base_address: u8 = memory.readByte(CPU_inst.RPC + 1); // Fetch a Zero Page address
         const address: u16 = (base_address + CPU_inst.RY) & 0xFF; // Adding and wrapping X to 8 bits
         byte_length = 2;
@@ -109,7 +109,7 @@ const AddressingModes = struct {
         return new_address; // return the calculated address
     }
     
-    fn absoluteAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16{
+    fn absoluteAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16 {
         // Instructions using absolute addressing contain a full 16 bit address to identify the target location.
         const low_byte: u8 = memory.readByte(CPU_inst.RPC + 1); // Fetching the low byte
         const high_byte: u8 = memory.readByte(CPU_inst.RPC + 2); // Fetching the high byte
@@ -120,7 +120,7 @@ const AddressingModes = struct {
         return result;
     }
 
-    fn absoluteXAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16{
+    fn absoluteXAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16 {
         const base_address: u16 = memory.readWord(CPU_inst.RPC + 1); // Fetching the absolute address
         const address: u16 = base_address + CPU_inst.RY; // Add Y Register
         byte_length = 3;
@@ -128,7 +128,7 @@ const AddressingModes = struct {
         return address;
     }
 
-    fn absoluteYAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16{
+    fn absoluteYAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8) u16 {
         const base_address: u16 = memory.readWord(CPU_inst.RPC + 1); // Fetching the absolute address
         const address: u16 = base_address + CPU_inst.RX; // Add X Register
         logging.infoLog("cpu_addressingModes: absolute y addressing mode finished!");
