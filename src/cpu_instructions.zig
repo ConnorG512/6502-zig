@@ -15,7 +15,7 @@
 //along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 // http://www.6502.org/users/obelisk/6502/instructions.html
-// http://www.6502.org/users/obelisk/6502/reference.html#LDA
+// http://www.6502.org/users/obelisk/6502/reference.html
 
 const CPU = @import("cpu.zig").CPU;
 const logging = @import("logging.zig");
