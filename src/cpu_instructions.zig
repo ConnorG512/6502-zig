@@ -305,7 +305,7 @@ pub const CPU_Instruction = struct {
 
         }
 
-        //cpu_flag.setFlag(cpu_flag.flagEnum.interrupt_f, &CPU_inst.RP);
+        cpu_flag.setFlag(cpu_flag.flagEnum.interrupt_f, &CPU_inst.RP);
         CPU_inst.RPC = memory[CPU_inst.RPC + 1];
     } 
 
