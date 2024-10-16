@@ -55,8 +55,9 @@ const AddressingModes = struct {
         illegalAddressingMode,         // 0xD
     };
 
-    pub fn callAddressingMode() void {
-
+    pub fn callAddressingMode(CPU_inst: *cpu, memory: *const []u8, byte_length: *u8, addressingModeIndex: addressingMode) void {
+        const selectedAddressingMode = ADDRESSING_MODE_SET[@intFromEnum(addressingModeIndex)];
+        selectedAddressingMode(CPU_inst, memory, byte_length);
     }
 
     //////////////////////////////////////////
