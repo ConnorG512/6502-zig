@@ -21,6 +21,7 @@ const CPU = @import("cpu.zig").CPU;
 const logging = @import("logging.zig");
 const std = @import("std");
 const cpu_flag = @import("cpu_flag.zig").CPU_flag;
+const memory_module = @import("memory.zig").Memory;
 
 pub const CPU_Instruction = struct {
 
@@ -44,8 +45,15 @@ pub const CPU_Instruction = struct {
     // Load / Store Operations
     ///////////////////////////////////////
     
-    pub fn LDA(_: *CPU, _: *const [65536]u8, _: addressingMode) void {
+    pub fn LDA(cpu: *CPU, memory: *const [65536]u8, _: addressingMode) void {
         logging.infoLog("cpu_instructions: LDA Called!");
+        // Fetching the next byte in memory so it is not collecting the opcode
+        const address: u16 = cpu.RPC + 1;
+
+        // Reading a byte of memory and putting it into the A register.
+        cpu.RA = memory_module.readByte(memory, address);
+        // Moving the skipping over the current instruction on the the next depending on the instructions size
+        cpu.RPC += 2;
     }
 
     pub fn LDX(_: *CPU, _: *const [65536]u8, _: addressingMode) void {
