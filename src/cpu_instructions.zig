@@ -44,7 +44,7 @@ pub const CPU_Instruction = struct {
     pub fn LDX(cpu: *CPU, memory: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
         logging.infoLog("cpu_instructions: LDX Called!");
         const address: u16 = cpu.RPC + 1;
-        cpu.RA = memory_module.readByte(memory, address)
+        cpu.RA = memory_module.readByte(memory, address);
     }
 
     pub fn LDY(cpu: *CPU, memory: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
