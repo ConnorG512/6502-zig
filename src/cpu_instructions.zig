@@ -30,7 +30,7 @@ pub const CPU_Instruction = struct {
     // Load / Store Operations
     ///////////////////////////////////////
     
-    pub fn LDA(cpu: *CPU, memory: *const [65536]u8, addressing_mode: addressingMode) void {
+    pub fn LDA(cpu: *CPU, memory: *const [65536]u8, _: cpu_addressing_mode.addressingMode) void {
         logging.infoLog("cpu_instructions: LDA Called!");
         // Fetching the next byte in memory so it is not collecting the opcode
         const address: u16 = cpu.RPC + 1;
